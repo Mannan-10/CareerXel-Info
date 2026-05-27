@@ -1,0 +1,133 @@
+/* Competitor Comparison CSS */
+.comparison-container {
+  margin-top: 56px;
+  width: 100%;
+}
+
+.comp-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border-l);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+  background: var(--paper);
+}
+
+.comp-table th, 
+.comp-table td {
+  padding: 18px 16px;
+  border-bottom: 1px solid var(--border-l);
+}
+
+.comp-table th {
+  background: var(--paper-2);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--l-2);
+  font-weight: 500;
+}
+
+.comp-table tr:last-child td {
+  border-bottom: none;
+}
+
+.comp-table tr {
+  transition: background-color 0.2s ease;
+}
+
+.comp-table tr:hover td {
+  background-color: rgba(74, 139, 255, 0.03);
+}
+
+.comp-table th.highlight,
+.comp-table td.highlight {
+  background-color: rgba(74, 139, 255, 0.04) !important;
+  border-left: 1px solid rgba(74, 139, 255, 0.15);
+  border-right: 1px solid rgba(74, 139, 255, 0.15);
+  font-weight: 500;
+}
+
+.comp-table td.yes {
+  color: var(--burnt);
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+.comp-table td.no {
+  color: #A0AAC0;
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+/* Mobile cards stacked view */
+.comp-cards-grid {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+  .comp-table-wrap {
+    display: none;
+  }
+  .comp-cards-grid {
+    display: flex;
+  }
+}
+
+.comp-mobile-card {
+  background: var(--paper);
+  border: 1px solid var(--border-l);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+}
+
+.comp-mobile-card h4 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 12px 0;
+  border-bottom: 1px solid var(--border-l);
+  padding-bottom: 8px;
+  color: var(--l-1);
+}
+
+.comp-mobile-card .row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 13px;
+  border-bottom: 1px dashed var(--border-l);
+}
+
+.comp-mobile-card .row:last-child {
+  border-bottom: none;
+}
+
+.comp-mobile-card .label {
+  color: var(--l-2);
+}
+
+.comp-mobile-card .val {
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.comp-mobile-card .val.yes {
+  color: var(--burnt);
+  font-weight: bold;
+}
+
+.comp-mobile-card .val.no {
+  color: #A0AAC0;
+}

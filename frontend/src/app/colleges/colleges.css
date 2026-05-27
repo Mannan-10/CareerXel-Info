@@ -1,0 +1,86 @@
+/* colleges page styles — extracted from dangerouslySetInnerHTML */
+/* Cohort dashboard hero */
+.co-mock { aspect-ratio: 4/4.6; }
+.co-mock .body { padding: 14px; display: flex; flex-direction: column; gap: 10px; height: calc(100% - 32px); }
+.co-mock .row { display: flex; gap: 8px; }
+.co-mock .kpi { flex: 1; background: var(--surface-2); border: 1px solid var(--border-d); border-radius: 8px; padding: 10px; }
+.co-mock .kpi .l { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--d-3); }
+.co-mock .kpi .v { font-size: 22px; font-weight: 500; letter-spacing: -0.02em; margin-top: 4px; }
+.co-mock .panel { background: var(--surface-2); border: 1px solid var(--border-d); border-radius: 8px; padding: 12px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.co-mock h6 { margin: 0; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--d-3); }
+
+/* Bulk upload light mock */
+.up-mock { aspect-ratio: 16/9; }
+.up-mock .drop { padding: 14px; height: calc(100% - 32px); display: grid; grid-template-columns: 280px 1fr; gap: 16px; }
+@media (max-width: 768px) {
+  .up-mock { aspect-ratio: auto; min-height: 480px; }
+  .up-mock .drop { grid-template-columns: 1fr; height: auto; overflow: visible; }
+}
+.up-mock .zone { border: 2px dashed var(--border-l); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 12px; align-items: center; justify-content: center; text-align: center; background: var(--paper); position: relative; }
+.up-mock .zone .ic { width: 44px; height: 44px; border-radius: 12px; background: rgba(74,139,255,0.1); border: 1px solid rgba(74,139,255,0.3); display: flex; align-items: center; justify-content: center; color: var(--burnt); }
+.up-mock .zone .h { font-size: 14px; font-weight: 500; }
+.up-mock .zone .s { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--l-2); }
+.up-mock .progress { display: flex; flex-direction: column; gap: 8px; }
+.up-mock .file { padding: 10px 12px; background: var(--paper); border: 1px solid var(--border-l); border-radius: 8px; display: flex; align-items: center; gap: 10px; }
+.up-mock .file .ic { width: 24px; height: 24px; background: rgba(74,139,255,0.1); color: var(--burnt); border-radius: 5px; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 8px; letter-spacing: 0.1em; }
+.up-mock .file .info { flex: 1; }
+.up-mock .file .nm { font-size: 12px; font-weight: 500; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; max-width: 140px; }
+.up-mock .file .meta { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; color: var(--l-2); }
+.up-mock .file .bar { width: 80px; height: 4px; background: var(--border-l); border-radius: 2px; overflow: hidden; }
+.up-mock .file .bar > div { height: 100%; background: var(--amber); transition: width 0.3s ease; }
+.up-mock .file .pct { font-family: var(--font-mono); font-size: 10px; color: var(--burnt); width: 36px; text-align: right; }
+.up-mock .file.done .pct { color: var(--brand-green, #1F8A5B); }
+
+/* Roster */
+.roster-mock { aspect-ratio: 16/8.5; }
+@media (max-width: 880px) {
+  .roster-mock { aspect-ratio: auto; overflow-x: auto; min-height: 400px; }
+}
+.roster-mock .body { padding: 0; height: calc(100% - 32px); }
+.roster-mock .filters { display: flex; gap: 8px; padding: 12px 14px; border-bottom: 1px solid var(--border-d); align-items: center; flex-wrap: wrap; }
+.roster-mock .filters .f { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border: 1px solid var(--border-d); border-radius: 999px; color: var(--d-2); cursor: pointer; transition: all 0.15s; }
+.roster-mock .filters .f.on { background: var(--amber); border-color: var(--amber); color: #0F1832; }
+.roster-mock .filters .search { flex: 1; background: var(--surface-2); border: 1px solid var(--border-d); border-radius: 999px; padding: 4px 12px; font-family: var(--font-sans); font-size: 10px; color: var(--d-1); letter-spacing: 0.05em; outline: none; }
+.roster-mock .filters .search::placeholder { color: var(--d-3); }
+.roster-mock .table-wrap { width: 100%; overflow-x: auto; }
+.roster-mock .row { display: grid; grid-template-columns: 36px 1.6fr 1fr 80px 80px 80px 80px; padding: 10px 14px; border-bottom: 1px solid var(--border-d); align-items: center; font-size: 11px; min-width: 600px; }
+.roster-mock .row.head { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--d-3); background: var(--surface-2); }
+.roster-mock .row .av { width: 24px; height: 24px; border-radius: 50%; background: var(--surface-3); border: 1px solid var(--border-d); font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.05em; color: var(--d-2); display: flex; align-items: center; justify-content: center; }
+.roster-mock .row .nm { font-weight: 500; color: var(--d-1); }
+.roster-mock .row .meta { color: var(--d-3); font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.05em; margin-top: 2px; }
+.roster-mock .row .stat { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; }
+.roster-mock .row .stat.placed { color: var(--amber); }
+.roster-mock .row .stat.offer { color: var(--burnt); }
+.roster-mock .row .stat.active { color: var(--d-2); }
+
+/* Placement Analytics light */
+.pa-mock { aspect-ratio: 16/9; }
+@media (max-width: 768px) {
+  .pa-mock { aspect-ratio: auto; }
+  .pa-mock .body { grid-template-columns: 1fr !important; grid-template-rows: auto !important; height: auto !important; }
+  .pa-mock .span2 { grid-column: auto !important; }
+}
+.pa-mock .body { padding: 16px; height: calc(100% - 32px); display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 90px 1fr; gap: 12px; }
+.pa-mock .kpi { background: var(--paper); border: 1px solid var(--border-l); border-radius: 8px; padding: 12px; }
+.pa-mock .kpi .l { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--l-2); }
+.pa-mock .kpi .v { font-size: 26px; font-weight: 500; letter-spacing: -0.02em; margin-top: 4px; }
+.pa-mock .kpi .d { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; color: var(--burnt); }
+.pa-mock .panel { background: var(--paper); border: 1px solid var(--border-l); border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.pa-mock .panel h6 { margin: 0; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--l-2); }
+.pa-mock .span2 { grid-column: span 2; }
+
+/* PDF report */
+.pdf-mock { aspect-ratio: 1/1.4; max-width: 320px; margin: 0 auto; }
+.pdf-mock .pg { padding: 18px; height: calc(100% - 28px); display: flex; flex-direction: column; gap: 8px; background: var(--paper); }
+.pdf-mock .head { display: flex; justify-content: space-between; align-items: start; padding-bottom: 8px; border-bottom: 1px solid var(--border-l); }
+.pdf-mock .head .l h6 { margin: 0; font-size: 11px; font-weight: 500; }
+.pdf-mock .head .l .meta { font-family: var(--font-mono); font-size: 8px; letter-spacing: 0.1em; color: var(--l-2); }
+.pdf-mock .head .r { font-family: var(--font-mono); font-size: 8px; letter-spacing: 0.1em; color: var(--burnt); text-align: right; }
+.pdf-mock .sec { display: flex; flex-direction: column; gap: 4px; }
+.pdf-mock .sec .t { font-family: var(--font-mono); font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--l-2); }
+.pdf-mock .sec .b { font-size: 9px; color: var(--l-1); line-height: 1.5; }
+.pdf-mock .scoreband { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.pdf-mock .sc { background: var(--paper-2); border: 1px solid var(--border-l); border-radius: 4px; padding: 4px 6px; }
+.pdf-mock .sc .v { font-size: 14px; font-weight: 500; line-height: 1; }
+.pdf-mock .sc .l { font-family: var(--font-mono); font-size: 7px; letter-spacing: 0.1em; color: var(--l-2); }
+.pdf-mock .footer { margin-top: auto; font-family: var(--font-mono); font-size: 7px; letter-spacing: 0.1em; color: var(--l-2); display: flex; justify-content: space-between; padding-top: 8px; border-top: 1px solid var(--border-l); }

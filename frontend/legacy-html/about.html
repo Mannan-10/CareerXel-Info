@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CareerXel — About &amp; Contact</title>
+<link rel="stylesheet" href="shared.css" />
+<link rel="stylesheet" href="page.css" />
+<style>
+  .manifesto { max-width: 880px; }
+  .manifesto p { font-family: var(--font-display); font-weight: 300; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.18; letter-spacing: -0.02em; color: var(--d-1); margin: 0; }
+  .manifesto p .muted-weight { color: var(--d-3); }
+  .manifesto p + p { margin-top: 28px; }
+
+  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 80px; padding-top: 56px; border-top: 1px solid var(--border-d); }
+  @media (max-width: 880px) { .stats-row { grid-template-columns: 1fr 1fr; } }
+  .stat-cell .num { font-family: var(--font-display); font-weight: 200; font-size: clamp(48px, 5vw, 72px); letter-spacing: -0.03em; line-height: 0.9; color: var(--bone); }
+  .stat-cell .num .acc { color: var(--burnt); }
+  .stat-cell .lab { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--d-3); margin-top: 12px; }
+  .stat-cell .desc { color: var(--d-2); font-size: 13px; line-height: 1.5; margin-top: 6px; max-width: 220px; }
+
+  .timeline { display: flex; flex-direction: column; }
+  .tl-row { display: grid; grid-template-columns: 100px 1fr; gap: 56px; padding: 28px 0; border-top: 1px solid var(--border-l); align-items: start; }
+  .tl-row:last-child { border-bottom: 1px solid var(--border-l); }
+  .tl-year { font-family: var(--font-display); font-weight: 300; font-size: 36px; letter-spacing: -0.02em; color: var(--burnt); line-height: 1; }
+  .tl-content h4 { font-size: 20px; font-weight: 500; margin: 0; letter-spacing: -0.01em; }
+  .tl-content p { font-size: 14.5px; color: var(--l-2); margin: 8px 0 0; max-width: 580px; line-height: 1.6; }
+  .tl-content .meta { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--burnt); margin-top: 12px; }
+
+  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 56px; }
+  @media (max-width: 980px) { .team-grid { grid-template-columns: 1fr 1fr; } }
+  .person { display: flex; flex-direction: column; gap: 12px; }
+  .person .av { aspect-ratio: 1; background: var(--surface-2); border: 1px solid var(--border-d); border-radius: 12px; position: relative; overflow: hidden; display: flex; align-items: end; padding: 16px; }
+  .person .av .blob { position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 30%, rgba(74,139,255,0.18), transparent 60%), radial-gradient(ellipse at 70% 70%, rgba(42,95,217,0.12), transparent 60%); }
+  .person .av .ini { position: relative; font-family: var(--font-display); font-weight: 200; font-size: 64px; letter-spacing: -0.03em; color: var(--bone); line-height: 1; }
+  .person .av .tag { position: absolute; top: 12px; right: 12px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; padding: 3px 8px; background: rgba(0,0,0,0.4); border: 1px solid var(--border-d); color: var(--d-2); border-radius: 999px; }
+  .person .name { font-size: 16px; font-weight: 500; }
+  .person .role { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--d-3); }
+  .person .bio { font-size: 13px; color: var(--d-2); line-height: 1.55; }
+
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 56px; }
+  @media (max-width: 880px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+  .form-card { background: var(--paper); border: 1px solid var(--border-l); border-radius: 14px; padding: 32px; display: flex; flex-direction: column; gap: 18px; }
+  .form-card .field { display: flex; flex-direction: column; gap: 6px; }
+  .form-card .field label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--l-2); }
+  .form-card .field input, .form-card .field textarea, .form-card .field select { background: var(--paper-2); border: 1px solid var(--border-l); border-radius: 8px; padding: 10px 12px; font-family: var(--font-sans); font-size: 14px; color: var(--l-1); resize: vertical; }
+  .form-card .field input:focus, .form-card .field textarea:focus, .form-card .field select:focus { outline: none; border-color: var(--burnt); }
+  .form-card .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-card .submit { background: var(--burnt); color: var(--bone); padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; cursor: pointer; border: none; transition: background 0.15s; margin-top: 4px; }
+  .form-card .submit:hover { background: var(--amber); color: #0F1832; }
+
+  .info-block { display: flex; flex-direction: column; gap: 24px; }
+  .info-card { background: var(--paper); border: 1px solid var(--border-l); border-radius: 12px; padding: 22px; display: flex; gap: 16px; align-items: start; }
+  .info-card .ic { width: 36px; height: 36px; border-radius: 8px; background: rgba(74,139,255,0.1); border: 1px solid rgba(74,139,255,0.3); color: var(--burnt); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .info-card .h { font-size: 15px; font-weight: 500; }
+  .info-card .v { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--l-2); margin-top: 4px; line-height: 1.6; }
+
+  .office-card { background: var(--paper-2); border: 1px solid var(--border-l); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; gap: 4px; }
+  .office-card .l { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--burnt); }
+  .office-card .h { font-size: 15px; font-weight: 500; margin-top: 4px; }
+  .office-card .a { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.05em; color: var(--l-2); margin-top: 4px; line-height: 1.6; }
+
+  .offices-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  @media (max-width: 720px) { .offices-row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="mark"></span>CareerXel</a>
+    <div class="nav-links">
+      <a href="features.html">Product</a>
+      <a href="candidates.html">Solutions</a>
+      <a href="features.html">Features</a>
+      <a href="ai.html">AI</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="resources.html">Resources</a>
+    </div>
+    <div class="nav-actions">
+      <a class="btn btn-ghost" href="#">Sign in</a>
+      <a class="btn btn-primary" href="#">Get started</a>
+    </div>
+  </div>
+</nav>
+
+<!-- SIGNAL -->
+<div class="signal">
+  <div class="signal-inner">
+    <span class="pulse-dot"></span>
+    <div style="overflow:hidden; flex:1;">
+      <div class="signal-track">
+        <span><span class="hi">LIVE</span> · 12,847 INTERVIEWS THIS WEEK · 3.2K JOBS POSTED · <span class="hi">47 COLLEGES ONBOARDED</span> · 8 LANGUAGES SUPPORTED · UPTIME 99.98%</span>
+        <span><span class="hi">LIVE</span> · 12,847 INTERVIEWS THIS WEEK · 3.2K JOBS POSTED · <span class="hi">47 COLLEGES ONBOARDED</span> · 8 LANGUAGES SUPPORTED · UPTIME 99.98%</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- §00 MANIFESTO HERO -->
+<section class="dark-mesh" style="padding: 96px 0 80px;">
+  <div class="container">
+    <div class="sx-ribbon">
+      <span class="idx">§00<span class="slash"> / </span><span class="name">ABOUT</span></span>
+      <span>WHO WE ARE · WHY WE BUILD</span>
+    </div>
+    <div class="serif-kicker">A small team, on a long road.</div>
+    <div class="eyebrow" style="margin-top: 18px;">MANIFESTO</div>
+    <h1 class="display mt-24" style="max-width: 1100px;">
+      <span class="bone-grad">Hiring is broken.</span><br>
+      <span class="muted-weight">We're building the better version.</span>
+    </h1>
+    <div class="manifesto" style="margin-top: 64px;">
+      <p>The last decade taught the industry how to <span class="muted-weight">post jobs at scale</span>, parse resumes at scale, and ghost candidates at scale.</p>
+      <p>It did not teach anyone <span class="muted-weight">how to actually decide</span> if a person can do the work.</p>
+      <p>We're building a platform where the candidate is heard, the recruiter has receipts, and the college has the numbers <span class="muted-weight">it can actually defend</span>.</p>
+      <p style="font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); padding-top: 24px; border-top: 1px solid var(--border-d); margin-top: 56px;">▢ FOUNDED 2024 · KOTA · BANGALORE · SAN FRANCISCO</p>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-cell">
+        <div class="num">47<span class="acc">.</span></div>
+        <div class="lab">COLLEGES ONBOARDED</div>
+        <div class="desc">Across 9 states. Including 4 of India's top engineering schools.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">128k<span class="acc">.</span></div>
+        <div class="lab">CANDIDATES SERVED</div>
+        <div class="desc">Resumes built, interviews run, offers landed in 2025 alone.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">340<span class="acc">.</span></div>
+        <div class="lab">EMPLOYER PARTNERS</div>
+        <div class="desc">From Series-A startups to Fortune 100 GCCs.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">8<span class="acc">.</span></div>
+        <div class="lab">LANGUAGES SUPPORTED</div>
+        <div class="desc">English, Hindi, Tamil, Telugu, Kannada, Marathi, Bengali, Gujarati.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §01 TIMELINE LIGHT -->
+<section class="light section">
+  <div class="container">
+    <div class="sx-ribbon">
+      <span class="idx" style="color: var(--l-2);">§01<span class="slash"> / </span><span class="name">JOURNEY</span></span>
+      <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--l-2);">2024 → 2026</span>
+    </div>
+    <div class="section-header">
+      <div class="eyebrow">JOURNEY</div>
+      <h2 class="h-section" style="margin-top: 18px;">
+        Every milestone,<br><span class="muted-weight">in the order it happened.</span>
+      </h2>
+    </div>
+    <div class="timeline" style="margin-top: 56px;">
+      <div class="tl-row">
+        <div class="tl-year">2024</div>
+        <div class="tl-content">
+          <h4>The first version</h4>
+          <p>CareerXel started as a side project: an AI mock-interview tool for the founder's cousin's placement prep. By month three, it had 800 weekly users and zero spend on marketing.</p>
+          <div class="meta">▢ FOUNDED · MAR 2024 · KOTA</div>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-year">2024</div>
+        <div class="tl-content">
+          <h4>First college partnership</h4>
+          <p>A regional engineering college signed up to onboard their entire 2025 batch. We built bulk CSV onboarding in 11 days. They placed 68% of their cohort — up from 41% the year before.</p>
+          <div class="meta">▢ JUL 2024 · 412 STUDENTS · 1 CAMPUS</div>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-year">2025</div>
+        <div class="tl-content">
+          <h4>Seed round &amp; recruiter ATS</h4>
+          <p>$4.2M seed led by Lightspeed and Blume. We launched the recruiter ATS — stages, scorecards, calendars — and added our first 50 employer partners. SOC 2 Type I shipped in the same quarter.</p>
+          <div class="meta">▢ FEB 2025 · $4.2M · LIGHTSPEED + BLUME</div>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-year">2025</div>
+        <div class="tl-content">
+          <h4>Proctoring &amp; the scoring engine</h4>
+          <p>Identity verification, face presence, and the 12-dimension scoring engine — all calibrated against real outcomes from our partner cohorts. SOC 2 Type II by year-end.</p>
+          <div class="meta">▢ NOV 2025 · 12 DIMS · SOC 2 TYPE II</div>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-year">2026</div>
+        <div class="tl-content">
+          <h4>Series A &amp; the international launch</h4>
+          <p>$22M Series A led by Sequoia. Offices in Bangalore and SF. First international cohorts onboarded from Singapore and Dubai. The team grew to 47.</p>
+          <div class="meta">▢ APR 2026 · $22M · SEQUOIA</div>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-year">Now</div>
+        <div class="tl-content">
+          <h4>What we're building next</h4>
+          <p>Private fine-tuned models per enterprise. Video-first interview replay. Career roadmaps tied directly into LMS. The list is long. We're hiring.</p>
+          <div class="meta">▢ ROADMAP · OPEN ROLES · 14</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §02 TEAM DARK -->
+<section class="dark-mesh section">
+  <div class="container">
+    <div class="sx-ribbon">
+      <span class="idx">§02<span class="slash"> / </span><span class="name">TEAM</span></span>
+      <span>47 PEOPLE · 9 OFFICES · 1 MISSION</span>
+    </div>
+    <div class="section-header">
+      <div class="eyebrow">FOUNDING TEAM</div>
+      <h2 class="h-section" style="margin-top: 18px;">
+        The people<br><span class="muted-weight">building this.</span>
+      </h2>
+    </div>
+    <div class="team-grid">
+      <div class="person">
+        <div class="av"><div class="blob"></div><span class="tag">CEO</span><div class="ini">AS</div></div>
+        <div><div class="name">Aarav Sundaram</div><div class="role">CO-FOUNDER · CEO</div></div>
+        <div class="bio">Previously Stripe, then ed-tech. Built CareerXel after watching too many cousins fail interviews they were qualified for.</div>
+      </div>
+      <div class="person">
+        <div class="av"><div class="blob"></div><span class="tag">CTO</span><div class="ini">PK</div></div>
+        <div><div class="name">Priya Khurana</div><div class="role">CO-FOUNDER · CTO</div></div>
+        <div class="bio">ML lead from Vercel. Spent four years on edge-rendering before pivoting to applied NLP for interview scoring.</div>
+      </div>
+      <div class="person">
+        <div class="av"><div class="blob"></div><span class="tag">COO</span><div class="ini">RK</div></div>
+        <div><div class="name">Rohan Kapoor</div><div class="role">CO-FOUNDER · COO</div></div>
+        <div class="bio">Ran placements at IIT-Hyderabad for six years. Knows what every NAAC exporter actually needs.</div>
+      </div>
+      <div class="person">
+        <div class="av"><div class="blob"></div><span class="tag">VP ENG</span><div class="ini">MS</div></div>
+        <div><div class="name">Maya Sundaram</div><div class="role">VP ENGINEERING</div></div>
+        <div class="bio">Stripe Atlas, then Linear. Joined to lead the recruiter ATS rebuild. The scorecards module is hers.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §03 OFFICES & CONTACT LIGHT -->
+<section class="light section">
+  <div class="container">
+    <div class="sx-ribbon">
+      <span class="idx" style="color: var(--l-2);">§03<span class="slash"> / </span><span class="name">CONTACT</span></span>
+      <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--l-2);">SAY HELLO · OR DON'T</span>
+    </div>
+    <div class="section-header">
+      <div class="eyebrow">CONTACT</div>
+      <h2 class="h-section" style="margin-top: 18px;">
+        Get in touch.<br><span class="muted-weight">A real human will reply.</span>
+      </h2>
+    </div>
+
+    <div class="contact-grid">
+      <form class="form-card" onsubmit="event.preventDefault(); this.querySelector('.submit').textContent='✓ SENT · WE WILL REPLY IN 24H';">
+        <div class="row2">
+          <div class="field"><label>First name</label><input type="text" placeholder="Priya" /></div>
+          <div class="field"><label>Last name</label><input type="text" placeholder="Khurana" /></div>
+        </div>
+        <div class="field"><label>Work email</label><input type="email" placeholder="priya@company.com" /></div>
+        <div class="row2">
+          <div class="field"><label>Company</label><input type="text" placeholder="Helix" /></div>
+          <div class="field"><label>I am a…</label>
+            <select>
+              <option>Candidate / job seeker</option>
+              <option>Recruiter / employer</option>
+              <option>College placement officer</option>
+              <option>Investor / partner</option>
+              <option>Press / media</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label>What can we help with?</label><textarea rows="4" placeholder="Tell us a bit about what you're working on…"></textarea></div>
+        <button type="submit" class="submit">▢ SEND MESSAGE</button>
+        <p style="font-size: 11px; color: var(--l-2); line-height: 1.5; margin: 0;">By submitting, you agree we may email you back. We don't share or sell your details. Ever.</p>
+      </form>
+
+      <div class="info-block">
+        <div class="info-card">
+          <div class="ic"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="16" height="12" rx="2"/><path d="M2 6l8 5 8-5"/></svg></div>
+          <div><div class="h">Sales · Enterprise</div><div class="v">sales@careerxel.com<br>+91 80 4567 8901</div></div>
+        </div>
+        <div class="info-card">
+          <div class="ic"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l2 2"/></svg></div>
+          <div><div class="h">Support · 24/7</div><div class="v">help@careerxel.com<br>Live chat in-app · 4h SLA</div></div>
+        </div>
+        <div class="info-card">
+          <div class="ic"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="7" r="3"/><path d="M3 17c1.5-3 4-4 7-4s5.5 1 7 4"/></svg></div>
+          <div><div class="h">Press &amp; Partnerships</div><div class="v">press@careerxel.com<br>partners@careerxel.com</div></div>
+        </div>
+
+        <div class="rule-label" style="color: var(--l-2); margin-top: 12px;">OFFICES · 3 LOCATIONS</div>
+        <div class="offices-row">
+          <div class="office-card">
+            <div class="l">▢ HQ</div>
+            <div class="h">Bangalore</div>
+            <div class="a">Block A · Cessna Park<br>Outer Ring Road · 560103<br>Karnataka · India</div>
+          </div>
+          <div class="office-card">
+            <div class="l">▢ AMERICAS</div>
+            <div class="h">San Francisco</div>
+            <div class="a">222 2nd St · Floor 11<br>SoMa · CA 94105<br>United States</div>
+          </div>
+          <div class="office-card">
+            <div class="l">▢ DEV</div>
+            <div class="h">Kota</div>
+            <div class="a">Talwandi · IPB Plaza<br>Rajasthan · 324005<br>India</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a class="brand" href="index.html"><span class="mark"></span>CareerXel</a>
+        <p style="font-size:13px; color:var(--d-3); margin-top:16px; max-width:240px; line-height:1.55;">An AI-native career and recruitment platform. Built for candidates, employers, and colleges.</p>
+      </div>
+      <div class="foot-col"><h5>Product</h5><ul><li><a href="features.html">Features</a></li><li><a href="ai.html">AI &amp; Intelligence</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="#">Changelog</a></li></ul></div>
+      <div class="foot-col"><h5>Solutions</h5><ul><li><a href="candidates.html">Candidates</a></li><li><a href="employers.html">Employers</a></li><li><a href="colleges.html">Colleges</a></li><li><a href="colleges.html">College Groups</a></li></ul></div>
+      <div class="foot-col"><h5>Resources</h5><ul><li><a href="resources.html">Blog</a></li><li><a href="resources.html">Help Center</a></li><li><a href="resources.html">Guides</a></li><li><a href="#">API Docs</a></li></ul></div>
+      <div class="foot-col"><h5>Company</h5><ul><li><a href="about.html">About</a></li><li><a href="about.html">Contact</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li></ul></div>
+      <div class="foot-col"><h5>Legal</h5><ul><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#">Cookies</a></li><li><a href="#">Security</a></li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 CAREERXEL · ALL RIGHTS RESERVED</span>
+      <div class="foot-social">
+        <a href="#"><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path d="M14 3h2.5l-5.5 6.3L17 17h-5l-3.7-4.8L4 17H1.5l5.9-6.7L1 3h5.1l3.4 4.5L14 3z"/></svg></a>
+        <a href="#"><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path d="M3 7h3v10H3zM4.5 3a1.7 1.7 0 100 3.4 1.7 1.7 0 000-3.4zM8 7h3v1.5c.5-1 1.7-1.7 3-1.7 2.4 0 3 1.5 3 3.7V17h-3v-5.5c0-1.3-.5-2-1.7-2-1.3 0-1.8.9-1.8 2V17H8z"/></svg></a>
+        <a href="#"><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 00-2.5 15.6c.4.1.5-.2.5-.4v-1.5c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.2 1.9.9 2.4.7.1-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-3.9 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.5.8 1.2.8 2.1 0 3-1.8 3.7-3.6 3.9.3.2.6.7.6 1.5v2.2c0 .2.1.5.5.4A8 8 0 0010 2z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

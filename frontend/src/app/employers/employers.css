@@ -1,0 +1,182 @@
+/* employers page styles — extracted from dangerouslySetInnerHTML */
+/* Pipeline kanban hero */
+.kanban-mock { aspect-ratio: 4/4.6; }
+@media (max-width: 768px) {
+  .kanban-mock { aspect-ratio: auto; min-height: 420px; }
+}
+.kanban-mock .body { padding: 12px; display: flex; gap: 6px; height: calc(100% - 32px); overflow-x: auto; }
+.kanban-mock .col { flex: 1; min-width: 110px; background: var(--surface-2); border: 1px solid var(--border-d); border-radius: 8px; padding: 8px; display: flex; flex-direction: column; gap: 5px; min-height: 0; }
+.kanban-mock .col h6 { margin: 0 0 6px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--d-3); display: flex; justify-content: space-between; }
+.kanban-mock .col h6 .ct { color: var(--amber); }
+.kanban-mock .card { background: var(--surface-3); border: 1px solid var(--border-d); border-radius: 6px; padding: 6px 7px; cursor: pointer; transition: all 0.15s ease; user-select: none; }
+.kanban-mock .card:hover { border-color: var(--amber); transform: translateY(-1px); }
+.kanban-mock .card .nm { font-size: 10px; color: var(--d-1); font-weight: 500; }
+.kanban-mock .card .ro { font-size: 9px; color: var(--d-3); font-family: var(--font-mono); letter-spacing: 0.06em; margin-top: 2px; }
+.kanban-mock .card.amber { border-color: rgba(74,139,255,0.4); }
+.kanban-mock .card.amber .nm { color: var(--amber); }
+
+/* Job posting editor */
+.job-mock { aspect-ratio: 1/1; }
+@media (max-width: 768px) {
+  .job-mock { aspect-ratio: auto; min-height: 380px; }
+}
+.job-mock .body { padding: 14px; height: calc(100% - 32px); display: flex; flex-direction: column; gap: 10px; overflow: hidden; }
+.job-mock .field { display: flex; flex-direction: column; gap: 4px; }
+.job-mock .field .l { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--d-3); }
+.job-mock .field .v { background: var(--surface-2); border: 1px solid var(--border-d); border-radius: 6px; padding: 6px 8px; font-size: 11px; color: var(--d-1); }
+.job-mock .field.amber .v { border-color: rgba(74,139,255,0.4); }
+.job-mock .field-row { display: flex; gap: 8px; }
+.job-mock .field-row > * { flex: 1; }
+
+/* Branded company page */
+.brand-mock { aspect-ratio: 1/1; }
+@media (max-width: 768px) {
+  .brand-mock { aspect-ratio: auto; min-height: 380px; }
+}
+.brand-mock .hero { padding: 16px; background: linear-gradient(135deg, rgba(74,139,255,0.18), transparent), var(--surface-2); border-bottom: 1px solid var(--border-d); }
+.brand-mock .hero h6 { margin: 0; font-size: 14px; font-weight: 500; }
+.brand-mock .hero .tag { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; }
+.brand-mock .body { padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.brand-mock .sec { display: flex; flex-direction: column; gap: 4px; }
+.brand-mock .sec .t { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--d-3); }
+.brand-mock .sec .b { font-size: 11px; color: var(--d-2); line-height: 1.5; }
+
+/* ATS table light */
+.ats-mock { aspect-ratio: 16/8.5; }
+@media (max-width: 880px) {
+  .ats-mock { aspect-ratio: auto; min-height: 480px; overflow-x: auto; }
+}
+.ats-mock .filters { display: flex; gap: 8px; padding: 12px 14px; border-bottom: 1px solid var(--border-l); background: var(--paper); flex-wrap: wrap; }
+.ats-mock .filters .f { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border: 1px solid var(--border-l); border-radius: 999px; color: var(--l-2); }
+.ats-mock .filters .f.on { background: var(--amber); border-color: var(--amber); color: #0F1832; }
+.ats-mock .table { display: flex; flex-direction: column; min-width: 600px; }
+.ats-mock .row { display: grid; grid-template-columns: 1.5fr 1fr 1fr 100px 80px; padding: 10px 14px; border-bottom: 1px solid var(--border-l); align-items: center; font-size: 12px; cursor: pointer; transition: background 0.1s ease; }
+.ats-mock .row:hover { background: rgba(0,0,0,0.02); }
+.ats-mock .row.head { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--l-2); background: var(--paper); }
+.ats-mock .row.head:hover { background: var(--paper); }
+.ats-mock .row .nm { font-weight: 500; }
+.ats-mock .row .role { color: var(--l-2); }
+.ats-mock .row .stat { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
+.ats-mock .row .score { font-weight: 500; color: var(--burnt); }
+.ats-mock .row.expanded { background: rgba(74,139,255,0.04); }
+.ats-mock .expand { padding: 16px 14px; background: var(--paper); border-bottom: 1px solid var(--border-l); display: grid; grid-template-columns: 180px 1fr 1fr; gap: 16px; min-width: 600px; }
+.ats-mock .expand .pic { background: var(--paper-2); border: 1px solid var(--border-l); border-radius: 8px; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 24px; color: var(--burnt); max-width: 140px; }
+.ats-mock .expand .col { display: flex; flex-direction: column; gap: 6px; }
+.ats-mock .expand .col h6 { margin: 0; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--l-2); }
+.ats-mock .expand .col p { margin: 0; font-size: 11px; color: var(--l-1); line-height: 1.5; }
+
+/* Calendar */
+.cal-mock { aspect-ratio: 16/6.5; }
+@media (max-width: 768px) {
+  .cal-mock { aspect-ratio: auto; }
+}
+.cal-mock .body { padding: 14px; display: grid; grid-template-columns: repeat(7, 1fr); grid-template-rows: 30px repeat(4, 1fr); gap: 4px; height: calc(100% - 32px); }
+.cal-mock .day-h { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--d-3); padding: 4px; text-align: center; }
+.cal-mock .cell { background: var(--surface-2); border: 1px solid var(--border-d); border-radius: 6px; padding: 6px; font-size: 9px; color: var(--d-3); position: relative; min-height: 36px; }
+.cal-mock .cell .num { font-family: var(--font-mono); font-size: 9px; }
+.cal-mock .cell.has::after { content: ''; position: absolute; bottom: 4px; left: 4px; right: 4px; height: 6px; border-radius: 3px; background: rgba(74,139,255,0.3); }
+.cal-mock .cell.has2::after { content: ''; position: absolute; bottom: 4px; left: 4px; right: 4px; height: 6px; border-radius: 3px; background: linear-gradient(to right, rgba(74,139,255,0.3) 50%, rgba(42,95,217,0.3) 50%); }
+
+/* AI Interview proctored mockup */
+.ai-mock { aspect-ratio: 16/8.5; }
+@media (max-width: 880px) {
+  .ai-mock { aspect-ratio: auto; }
+  .ai-mock .grid { grid-template-columns: 1fr !important; height: auto !important; }
+  .ai-mock .pane { border-right: 0 !important; border-bottom: 1px solid var(--border-d); }
+  .ai-mock .pane:last-child { border-bottom: 0; }
+}
+.ai-mock .grid { display: grid; grid-template-columns: 1.6fr 1.2fr 0.9fr; height: calc(100% - 32px); }
+.ai-mock .pane { padding: 14px; border-right: 1px solid var(--border-d); display: flex; flex-direction: column; gap: 10px; }
+.ai-mock .pane:last-child { border-right: 0; }
+.ai-mock h6 { margin: 0; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--d-3); }
+.ai-mock .video { background: linear-gradient(135deg, #3D4A6B, #232A3E); border: 1px solid var(--border-d); border-radius: 8px; aspect-ratio: 16/9; position: relative; overflow: hidden; }
+.ai-mock .video::before { content:''; position: absolute; inset: 0; background: repeating-linear-gradient(transparent 0, transparent 2px, rgba(74,139,255,0.05) 2px, rgba(74,139,255,0.05) 3px); pointer-events: none; }
+.ai-mock .video .silhouette { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--d-3); }
+.ai-mock .vid-meta { position: absolute; top: 6px; left: 6px; right: 6px; display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--d-2); }
+.ai-mock .vid-meta .live { color: var(--amber); }
+.ai-mock .badge {
+  display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px;
+  background: rgba(74,139,255,0.08); border: 1px solid rgba(74,139,255,0.4); border-radius: 999px;
+  font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber);
+  align-self: flex-start;
+}
+.ai-mock .code { background: var(--surface-2); border: 1px solid var(--border-d); border-radius: 8px; padding: 10px; font-family: var(--font-mono); font-size: 10px; line-height: 1.6; color: var(--d-2); flex: 1; }
+.ai-mock .code .kw { color: var(--amber); } .ai-mock .code .st { color: var(--burnt); }
+.ai-mock .scoring { background: var(--surface-2); border: 1px solid var(--border-d); border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+
+/* Templates */
+.tpl-mock { aspect-ratio: 16/9; }
+@media (max-width: 768px) {
+  .tpl-mock { aspect-ratio: auto; }
+  .tpl-mock .body { grid-template-columns: 1fr !important; height: auto !important; }
+}
+.tpl-mock .body { padding: 14px; display: grid; grid-template-columns: 200px 1fr; height: calc(100% - 32px); gap: 10px; }
+.tpl-mock .nav { background: var(--paper); border: 1px solid var(--border-l); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 4px; }
+.tpl-mock .nav .li { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--l-2); padding: 5px 8px; border-radius: 5px; cursor: pointer; transition: all 0.15s; }
+.tpl-mock .nav .li.on { background: rgba(74,139,255,0.1); color: var(--burnt); }
+.tpl-mock .grid-tpl { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; }
+.tpl-mock .card { background: var(--paper); border: 1px solid var(--border-l); border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 6px; justify-content: space-between; }
+.tpl-mock .card .t { font-size: 11px; font-weight: 500; color: var(--l-1); }
+.tpl-mock .card .d { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--l-2); }
+
+/* Analytics */
+.an-mock { aspect-ratio: 16/9; }
+@media (max-width: 880px) {
+  .an-mock { aspect-ratio: auto; }
+  .an-mock .body { grid-template-columns: 1fr !important; grid-template-rows: auto !important; height: auto !important; }
+  .an-mock .panel-stretch { grid-row: auto !important; }
+}
+.an-mock .body { padding: 16px; display: grid; grid-template-columns: 1fr 1fr 280px; grid-template-rows: 80px 1fr; gap: 10px; height: calc(100% - 32px); }
+.an-mock .kpi { background: var(--surface-2); border: 1px solid var(--border-d); border-radius: 8px; padding: 10px; }
+.an-mock .kpi .l { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--d-3); }
+.an-mock .kpi .v { font-size: 22px; font-weight: 500; letter-spacing: -0.02em; margin-top: 4px; }
+.an-mock .kpi .d { font-family: var(--font-mono); font-size: 9px; color: var(--amber); }
+.an-mock .panel { background: var(--surface-2); border: 1px solid var(--border-d); border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.an-mock .panel h6 { margin: 0; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--d-3); }
+
+.panel-stretch { grid-row: span 2; }
+
+/* ========================================
+   RESPONSIVE ATS TABLE EXPAND STACKING
+   ======================================== */
+@media (max-width: 768px) {
+  .ats-mock .expand {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-width: auto;
+  }
+  .ats-mock .expand .pic {
+    max-width: 100px;
+    aspect-ratio: 1/1;
+  }
+}
+
+/* ========================================
+   MOBILE — PREVENT PAGE-LEVEL X OVERFLOW
+   ======================================== */
+@media (max-width: 768px) {
+  /* Lock the employer page root so internal wide mocks
+     (kanban, ats table) cannot bleed into a page scrollbar. */
+  main,
+  .employers-page {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  /* The kanban board scrolls internally — constrain its outer shell */
+  .kanban-mock {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  .kanban-mock .body {
+    overflow-x: auto;   /* internal scroll is still fine */
+    /* prevent the internal scroll from causing outer page scroll */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ATS wrapper already has overflow-x: auto — just keep it contained */
+  .ats-mock {
+    max-width: 100%;
+  }
+}
+

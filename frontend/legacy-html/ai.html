@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CareerXel — AI &amp; Intelligence</title>
+<link rel="stylesheet" href="shared.css" />
+<link rel="stylesheet" href="page.css" />
+<style>
+  /* AI hero diagram */
+  .ai-diagram {
+    aspect-ratio: 4/4.4;
+    background: var(--surface-1);
+    border: 1px solid var(--border-d);
+    border-radius: 14px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ai-diagram::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(180,210,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(180,210,255,0.04) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+  }
+  .ai-diagram .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--d-3);
+    margin-bottom: 18px;
+    position: relative;
+  }
+  .ai-diagram .head .lt { color: var(--amber); }
+  .ai-diagram svg.flow { width: 100%; height: 100%; }
+
+  /* Pillar grid */
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+  @media (max-width: 980px) { .pillar-grid { grid-template-columns: 1fr; } }
+  .pillar {
+    background: var(--paper);
+    border: 1px solid var(--border-l);
+    border-radius: 14px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pillar .num {
+    font-family: var(--font-display);
+    font-weight: 200;
+    font-size: 80px;
+    color: var(--burnt);
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+    margin-bottom: 16px;
+  }
+  .pillar h3 { font-size: 22px; font-weight: 500; letter-spacing: -0.015em; margin: 0; }
+  .pillar p { color: var(--l-2); margin: 0; line-height: 1.6; font-size: 14px; }
+  .pillar ul {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .pillar li {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--l-1);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .pillar li::before { content: '▢'; color: var(--amber); }
+  .pillar .tag {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--l-2);
+    border: 1px solid var(--border-l);
+    padding: 3px 8px;
+    border-radius: 999px;
+  }
+
+  /* Scoring dims grid */
+  .dim-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 40px; }
+  @media (max-width: 980px) { .dim-grid { grid-template-columns: 1fr 1fr; } }
+  .dim {
+    background: var(--surface-2);
+    border: 1px solid var(--border-d);
+    border-radius: 10px;
+    padding: 16px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .dim .lab {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .dim .lab .l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--d-3); }
+  .dim .lab .v { font-family: var(--font-mono); font-size: 14px; color: var(--amber); font-weight: 500; }
+  .dim .nm { font-size: 14px; color: var(--d-1); font-weight: 500; }
+  .dim .desc { font-size: 11px; color: var(--d-3); line-height: 1.5; }
+  .dim .bar { height: 4px; background: var(--surface-3); border-radius: 2px; overflow: hidden; margin-top: 4px; }
+  .dim .bar > div { height: 100%; background: var(--amber); border-radius: 2px; }
+
+  /* Trust strip */
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+  @media (max-width: 980px) { .trust-grid { grid-template-columns: 1fr 1fr; } }
+  .trust-card {
+    border: 1px solid var(--border-l);
+    border-radius: 12px;
+    padding: 24px;
+    background: var(--paper);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .trust-card .ic {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border-l);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--burnt);
+  }
+  .trust-card .h { font-size: 16px; font-weight: 500; }
+  .trust-card .d { font-size: 13px; color: var(--l-2); line-height: 1.5; }
+
+  /* explainability mock */
+  .explain-mock { aspect-ratio: 16/9; }
+  .explain-mock .body { padding: 18px; height: calc(100% - 32px); display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .explain-mock .col { display: flex; flex-direction: column; gap: 12px; }
+  .explain-mock h6 { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--d-3); margin: 0; }
+  .explain-mock .factor { background: var(--surface-2); border: 1px solid var(--border-d); border-radius: 8px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; }
+  .explain-mock .factor .nm { font-size: 12px; color: var(--d-1); }
+  .explain-mock .factor .impact { display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 10px; }
+  .explain-mock .factor .impact .pos { color: var(--amber); }
+  .explain-mock .factor .impact .neg { color: #A0AAC0; }
+  .explain-mock .verdict { background: rgba(74,139,255,0.06); border: 1px solid rgba(74,139,255,0.3); border-radius: 8px; padding: 12px; }
+  .explain-mock .verdict .v-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; color: var(--amber); }
+  .explain-mock .verdict .v-h { font-size: 18px; font-weight: 500; margin-top: 4px; }
+  .explain-mock .verdict .v-d { font-size: 12px; color: var(--d-2); margin-top: 8px; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="mark"></span>CareerXel</a>
+    <div class="nav-links">
+      <a href="features.html">Product</a>
+      <a href="candidates.html">Solutions</a>
+      <a href="features.html">Features</a>
+      <a href="ai.html">AI</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="resources.html">Resources</a>
+    </div>
+    <div class="nav-actions">
+      <a class="btn btn-ghost" href="#">Sign in</a>
+      <a class="btn btn-primary" href="#">Get started</a>
+    </div>
+  </div>
+</nav>
+
+<!-- SIGNAL -->
+<div class="signal">
+  <div class="signal-inner">
+    <span class="pulse-dot"></span>
+    <div style="overflow:hidden; flex:1;">
+      <div class="signal-track">
+        <span><span class="hi">LIVE</span> · 12,847 INTERVIEWS THIS WEEK · 3.2K JOBS POSTED · <span class="hi">47 COLLEGES ONBOARDED</span> · 8 LANGUAGES SUPPORTED · UPTIME 99.98%</span>
+        <span><span class="hi">LIVE</span> · 12,847 INTERVIEWS THIS WEEK · 3.2K JOBS POSTED · <span class="hi">47 COLLEGES ONBOARDED</span> · 8 LANGUAGES SUPPORTED · UPTIME 99.98%</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- §00 HERO -->
+<section class="dark-mesh p-hero" data-screen-label="00 Hero">
+  <div class="container">
+    <div class="sx-ribbon">
+      <span class="idx">§00<span class="slash"> / </span><span class="name">AI &amp; INTELLIGENCE</span></span>
+      <span>EXPLAINABLE · CALIBRATED · YOURS</span>
+    </div>
+    <div class="p-hero-grid">
+      <div>
+        <div class="serif-kicker">No black boxes.</div>
+        <div class="eyebrow" style="margin-top:18px;">AI &amp; INTELLIGENCE</div>
+        <h1 class="display mt-24">
+          <span class="bone-grad">Explainable AI</span><br>
+          <span class="muted-weight">across the whole journey.</span>
+        </h1>
+        <p class="subhead">From resume parse to hire recommendation, every model output is traceable, auditable, and tuned to real outcomes — not vibes.</p>
+        <div class="flex gap-12 mt-32">
+          <a class="btn btn-primary" href="#">Read the model card
+            <svg class="icon" viewBox="0 0 20 20"><path d="M5 10h10M11 6l4 4-4 4"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#">See methodology</a>
+        </div>
+      </div>
+      <div class="p-hero-mock">
+        <div class="ai-diagram">
+          <div class="head">
+            <span class="lt">▢ MODEL · CXL-V4</span>
+            <span>EXPLAINABLE · CALIBRATED</span>
+          </div>
+          <svg class="flow" viewBox="0 0 400 400">
+            <defs>
+              <marker id="arr" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M0 0 L8 4 L0 8 Z" fill="#4A8BFF"/>
+              </marker>
+            </defs>
+            <!-- Stage 1 - Input -->
+            <g>
+              <rect x="20" y="60" width="100" height="40" rx="6" fill="#1A1F2E" stroke="#4A8BFF"/>
+              <text x="70" y="78" text-anchor="middle" font-family="Fraunces" font-size="13" fill="#C2D8FF">Resume</text>
+              <text x="70" y="92" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#A0AAC0">PARSE · OCR</text>
+            </g>
+            <g>
+              <rect x="20" y="170" width="100" height="40" rx="6" fill="#1A1F2E" stroke="#4A8BFF"/>
+              <text x="70" y="188" text-anchor="middle" font-family="Fraunces" font-size="13" fill="#C2D8FF">Mock IV</text>
+              <text x="70" y="202" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#A0AAC0">VIDEO · AUDIO</text>
+            </g>
+            <g>
+              <rect x="20" y="280" width="100" height="40" rx="6" fill="#1A1F2E" stroke="#4A8BFF"/>
+              <text x="70" y="298" text-anchor="middle" font-family="Fraunces" font-size="13" fill="#C2D8FF">Job Spec</text>
+              <text x="70" y="312" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#A0AAC0">JD · TAXONOMY</text>
+            </g>
+            <!-- arrows to embed -->
+            <path d="M125 80 L170 175" stroke="#4A8BFF" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+            <path d="M125 190 L170 190" stroke="#4A8BFF" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+            <path d="M125 300 L170 215" stroke="#4A8BFF" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+            <!-- Embed -->
+            <g>
+              <rect x="170" y="170" width="110" height="40" rx="6" fill="rgba(74,139,255,0.1)" stroke="#4A8BFF" stroke-width="1.5"/>
+              <text x="225" y="188" text-anchor="middle" font-family="Fraunces" font-size="13" fill="#C2D8FF">Embeddings</text>
+              <text x="225" y="202" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#4A8BFF">CXL-V4</text>
+            </g>
+            <!-- Arrow to scoring -->
+            <path d="M283 190 L330 100" stroke="#4A8BFF" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+            <path d="M283 190 L330 190" stroke="#4A8BFF" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+            <path d="M283 190 L330 280" stroke="#4A8BFF" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+            <!-- Outputs -->
+            <g>
+              <rect x="330" y="80" width="60" height="40" rx="6" fill="#2A5FD9"/>
+              <text x="360" y="96" text-anchor="middle" font-family="Fraunces" font-size="11" fill="#C2D8FF">Match</text>
+              <text x="360" y="110" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#C2D8FF">96%</text>
+            </g>
+            <g>
+              <rect x="330" y="170" width="60" height="40" rx="6" fill="#2A5FD9"/>
+              <text x="360" y="186" text-anchor="middle" font-family="Fraunces" font-size="11" fill="#C2D8FF">Score</text>
+              <text x="360" y="200" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#C2D8FF">82</text>
+            </g>
+            <g>
+              <rect x="330" y="260" width="60" height="40" rx="6" fill="#2A5FD9"/>
+              <text x="360" y="276" text-anchor="middle" font-family="Fraunces" font-size="11" fill="#C2D8FF">Hire?</text>
+              <text x="360" y="290" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#C2D8FF">YES</text>
+            </g>
+            <!-- guidewires labels -->
+            <text x="200" y="50" font-family="JetBrains Mono" font-size="8" letter-spacing="0.1em" fill="#6B7590">INPUT</text>
+            <text x="200" y="148" font-family="JetBrains Mono" font-size="8" letter-spacing="0.1em" fill="#6B7590">SHARED REPRESENTATION</text>
+            <text x="200" y="248" font-family="JetBrains Mono" font-size="8" letter-spacing="0.1em" fill="#6B7590">OUTPUT</text>
+            <text x="330" y="50" font-family="JetBrains Mono" font-size="8" letter-spacing="0.1em" fill="#6B7590">DECISIONS</text>
+          </svg>
+        </div>
+        <div class="frag" style="top: 4%; left: -16%; transform: rotate(-5deg); max-width: 200px;">
+          <div class="mono" style="color: var(--amber); margin-bottom: 4px;">▢ TRACE</div>
+          <div style="font-size: 13px; font-weight: 500;">Every score is auditable.</div>
+        </div>
+        <div class="frag" style="bottom: 8%; right: -12%; transform: rotate(5deg); max-width: 200px;">
+          <div class="mono" style="color: var(--d-3); margin-bottom: 4px;">▢ MODEL CARD</div>
+          <div style="font-size: 13px; font-weight: 500;">Public. Versioned. Signed.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §01 THREE PILLARS LIGHT -->
+<section class="light section">
+  <div class="container">
+    <div class="sx-ribbon">
+      <span class="idx" style="color: var(--l-2);">§01<span class="slash"> / </span><span class="name">THREE PILLARS</span></span>
+      <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--l-2);">EXPLAIN · CALIBRATE · TRUST</span>
+    </div>
+    <div class="section-header">
+      <div class="eyebrow">PRINCIPLES</div>
+      <h2 class="h-section" style="margin-top: 18px;">
+        Three things we won't compromise on.
+      </h2>
+    </div>
+    <div class="pillar-grid">
+      <div class="pillar">
+        <div class="num">01</div>
+        <h3>Explainable</h3>
+        <p>Every score, every match, every recommendation comes with a trace — which inputs mattered, by how much, and why.</p>
+        <ul>
+          <li>FACTOR-LEVEL CONTRIBUTIONS</li>
+          <li>SOURCE QUOTES PER ANSWER</li>
+          <li>HUMAN-READABLE TRACES</li>
+        </ul>
+        <span class="tag">/EXPLAIN</span>
+      </div>
+      <div class="pillar">
+        <div class="num">02</div>
+        <h3>Calibrated</h3>
+        <p>Models are tuned monthly against real hiring outcomes from real partners. We track precision, recall, and bias on every release.</p>
+        <ul>
+          <li>MONTHLY OUTCOME RECAL</li>
+          <li>FAIRNESS · PER COHORT</li>
+          <li>VERSIONED MODEL CARDS</li>
+        </ul>
+        <span class="tag">/CALIBRATE</span>
+      </div>
+      <div class="pillar">
+        <div class="num">03</div>
+        <h3>Yours</h3>
+        <p>Your data trains your private models. Never pooled. Never sold. Per-tenant fine-tuning available for enterprise.</p>
+        <ul>
+          <li>PER-TENANT ISOLATION</li>
+          <li>NO POOLED TRAINING</li>
+          <li>BYOK · OPTIONAL</li>
+        </ul>
+        <span class="tag">/YOURS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §02 SCORING DIMENSIONS DARK -->
+<section class="dark-mesh section">
+  <div class="container">
+    <div class="sx-ribbon">
+      <span class="idx">§02<span class="slash"> / </span><span class="name">SCORING DIMENSIONS</span></span>
+      <span>12 SIGNALS · ONE VERDICT</span>
+    </div>
+    <div class="section-header">
+      <div class="eyebrow">12 DIMENSIONS</div>
+      <h2 class="h-section" style="margin-top: 18px;">
+        What we score.<br><span class="muted-weight">All of it. Out in the open.</span>
+      </h2>
+      <p class="subhead">Sample session · Senior Frontend Engineer track</p>
+    </div>
+    <div class="dim-grid">
+      <div class="dim">
+        <div class="lab"><span class="l">D.01</span><span class="v">82</span></div>
+        <div class="nm">Technical depth</div>
+        <div class="desc">Specificity, mechanism-level reasoning, debugging fluency.</div>
+        <div class="bar"><div style="width: 82%;"></div></div>
+      </div>
+      <div class="dim">
+        <div class="lab"><span class="l">D.02</span><span class="v">74</span></div>
+        <div class="nm">Communication</div>
+        <div class="desc">Clarity, structure, listener-awareness, word economy.</div>
+        <div class="bar"><div style="width: 74%; background: var(--burnt);"></div></div>
+      </div>
+      <div class="dim">
+        <div class="lab"><span class="l">D.03</span><span class="v">88</span></div>
+        <div class="nm">Problem solving</div>
+        <div class="desc">Strategy selection, dead-end recovery, time-to-insight.</div>
+        <div class="bar"><div style="width: 88%;"></div></div>
+      </div>
+      <div class="dim">
+        <div class="lab"><span class="l">D.04</span><span class="v">79</span></div>
+        <div class="nm">Systems thinking</div>
+        <div class="desc">Tradeoffs, scaling instincts, second-order awareness.</div>
+        <div class="bar"><div style="width: 79%;"></div></div>
+      </div>
+      <div class="dim">
+        <div class="lab"><span class="l">D.05</span><span class="v">85</span></div>
+        <div class="nm">Code fluency</div>
+        <div class="desc">Idiom, syntax, debugger comfort, refactoring instincts.</div>
+        <div class="bar"><div style="width: 85%;"></div></div>
+      </div>
+      <div class="dim">
+        <div class="lab"><span class="l">D.06</span><span class="v">71</span></div>
+        <div class="nm">Domain knowledge</div>
+        <div class="desc">Stack-specific recall, framework idioms, library mastery.</div>
+        <div class="bar"><div style="width: 71%; background: var(--burnt);"></div></div>
+      </div>
+      <div class="dim">
+        <div class="lab"><span class="l">D.07</span><span class="v">90</span></div>
+        <div class="nm">Behavioral fit</div>
+        <div class="desc">STAR-quality stories, ownership signals, conflict patterns.</div>
+        <div class="bar"><div style="width: 90%;"></div></div>
+      </div>
+      <div class="dim">
+        <div class="lab"><span class="l">D.08</span><span class="v">68</span></div>
+        <div class="nm">Curiosity &amp; growth</div>
+        <div class="desc">Self-direction, learning velocity, asks good questions.</div>
+        <div class="bar"><div style="width: 68%; background: var(--burnt);"></div></div>
+      </div>
+      <div class="dim">
+        <div class="lab"><span class="l">D.09</span><span class="v">76</span></div>
+        <div class="nm">Tooling</div>
+        <div class="desc">Editor, terminal, CI, observability, local-dev velocity.</div>
+        <div class="bar"><div style="width: 76%;"></div></div>
+      </div>
+      <div class="dim">
+        <div class="lab"><span class="l">D.10</span><span class="v">83</span></div>
+        <div class="nm">Architecture</div>
+        <div class="desc">Module boundaries, contract design, abstraction taste.</div>
+        <div class="bar"><div style="width: 83%;"></div></div>
+      </div>
+      <div class="dim">
+        <div class="lab"><span class="l">D.11</span><span class="v">87</span></div>
+        <div class="nm">Composure</div>
+        <div class="desc">Pace under pressure, recovery from errors, signal stability.</div>
+        <div class="bar"><div style="width: 87%;"></div></div>
+      </div>
+      <div class="dim">
+        <div class="lab"><span class="l">D.12</span><span class="v">81</span></div>
+        <div class="nm">Overall</div>
+        <div class="desc">Weighted composite. Calibrated against real hiring outcomes.</div>
+        <div class="bar"><div style="width: 81%;"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §03 EXPLAINABILITY MOCK LIGHT -->
+<section class="light section">
+  <div class="container">
+    <div class="sx-ribbon">
+      <span class="idx" style="color: var(--l-2);">§03<span class="slash"> / </span><span class="name">EXPLAINABILITY</span></span>
+      <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--l-2);">EVERY DECISION · TRACED</span>
+    </div>
+    <div class="two-asym">
+      <div>
+        <div class="eyebrow" style="margin-bottom: 18px;">EXPLAINABILITY</div>
+        <h2 class="h-section">
+          Click any score.<br>
+          <span class="muted-weight">See the receipts.</span>
+        </h2>
+        <p class="subhead">Recruiters see exactly what drove the recommendation. Candidates see exactly where to improve. Models can't hide behind aggregates.</p>
+        <div class="chips-row">
+          <span class="chip">FACTOR ATTRIBUTION</span>
+          <span class="chip">SOURCE QUOTES</span>
+          <span class="chip">CONFIDENCE INTERVALS</span>
+          <span class="chip amber">EXPORTABLE</span>
+        </div>
+      </div>
+      <div class="mock-l explain-mock">
+        <div class="mock-bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="mono" style="color: #6B7590; margin-left: auto;">EXPLAIN · P. KHURANA · SR FE</span>
+        </div>
+        <div class="body">
+          <div class="col">
+            <h6>▢ TOP POSITIVE FACTORS</h6>
+            <div class="factor"><span class="nm">React internals · 4 specific examples</span><span class="impact"><span class="pos">+12.4</span></span></div>
+            <div class="factor"><span class="nm">Perf debugging story · Quanta</span><span class="impact"><span class="pos">+8.7</span></span></div>
+            <div class="factor"><span class="nm">System design · cache invalidation</span><span class="impact"><span class="pos">+7.2</span></span></div>
+            <div class="factor"><span class="nm">STAR · ownership of design tokens</span><span class="impact"><span class="pos">+5.1</span></span></div>
+          </div>
+          <div class="col">
+            <h6>▢ NEGATIVE FACTORS</h6>
+            <div class="factor"><span class="nm">DS · binary tree confusion</span><span class="impact"><span class="neg">−4.2</span></span></div>
+            <div class="factor"><span class="nm">Spoke over interviewer · 3 instances</span><span class="impact"><span class="neg">−2.1</span></span></div>
+            <div class="verdict">
+              <div class="v-l">VERDICT</div>
+              <div class="v-h" style="color: var(--burnt);">RECOMMEND HIRE · 81 / 100</div>
+              <div class="v-d">High signal on systems and ownership. Recommend a brief follow-up on data structures before final round.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §04 TRUST LIGHT (extends §03 light) -->
+<section class="light" style="padding-bottom: 120px;">
+  <div class="container">
+    <div class="rule-label" style="color: var(--l-2);">TRUST · GOVERNANCE</div>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <div class="ic">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2L3 5v5c0 4 3 7 7 8 4-1 7-4 7-8V5l-7-3z"/></svg>
+        </div>
+        <div class="h">SOC 2 · Type II</div>
+        <div class="d">Annual audit. Per-tenant data isolation. Encryption in transit and at rest.</div>
+      </div>
+      <div class="trust-card">
+        <div class="ic">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="7"/><path d="M2 10h16M10 3a10 10 0 010 14M10 3a10 10 0 000 14"/></svg>
+        </div>
+        <div class="h">GDPR · DPDP</div>
+        <div class="d">Right-to-delete, data export, regional data residency on enterprise plans.</div>
+      </div>
+      <div class="trust-card">
+        <div class="ic">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M7 8h6M7 11h6M7 14h4"/></svg>
+        </div>
+        <div class="h">Fairness audit</div>
+        <div class="d">Quarterly bias review across age, gender, geography, college tier. Public summary.</div>
+      </div>
+      <div class="trust-card">
+        <div class="ic">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 10l3 3 7-7"/><circle cx="10" cy="10" r="8"/></svg>
+        </div>
+        <div class="h">Human-in-the-loop</div>
+        <div class="d">Model never auto-rejects. Recruiters always make the final call. Ever.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §05 CTA -->
+<section class="cta-mesh page-cta" style="position: relative; overflow: hidden;">
+  <div class="container">
+    <div class="sx-ribbon">
+      <span class="idx">§05<span class="slash"> / </span><span class="name">READ MORE</span></span>
+      <span>OPEN MODEL CARD</span>
+    </div>
+    <div class="eyebrow" style="justify-content: center; margin: 0 auto 18px;">DEEPER DIVE</div>
+    <h2 class="display"><span class="bone-grad">Read the full model card.</span></h2>
+    <p style="font-size: 19px; color: var(--d-2); max-width: 600px; margin: 24px auto 0;">Versioned, signed, and updated every release. Methodology, datasets, fairness audits — all public.</p>
+    <div class="flex gap-12 mt-32" style="justify-content: center;">
+      <a class="btn btn-primary" href="#">Read the model card</a>
+      <a class="btn btn-ghost" href="#">Talk to security</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a class="brand" href="index.html"><span class="mark"></span>CareerXel</a>
+        <p style="font-size:13px; color:var(--d-3); margin-top:16px; max-width:240px; line-height:1.55;">An AI-native career and recruitment platform. Built for candidates, employers, and colleges.</p>
+      </div>
+      <div class="foot-col"><h5>Product</h5><ul><li><a href="features.html">Features</a></li><li><a href="ai.html">AI &amp; Intelligence</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="#">Changelog</a></li></ul></div>
+      <div class="foot-col"><h5>Solutions</h5><ul><li><a href="candidates.html">Candidates</a></li><li><a href="employers.html">Employers</a></li><li><a href="colleges.html">Colleges</a></li><li><a href="colleges.html">College Groups</a></li></ul></div>
+      <div class="foot-col"><h5>Resources</h5><ul><li><a href="resources.html">Blog</a></li><li><a href="resources.html">Help Center</a></li><li><a href="resources.html">Guides</a></li><li><a href="#">API Docs</a></li></ul></div>
+      <div class="foot-col"><h5>Company</h5><ul><li><a href="about.html">About</a></li><li><a href="about.html">Contact</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li></ul></div>
+      <div class="foot-col"><h5>Legal</h5><ul><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#">Cookies</a></li><li><a href="#">Security</a></li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 CAREERXEL · ALL RIGHTS RESERVED</span>
+      <div class="foot-social">
+        <a href="#"><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path d="M14 3h2.5l-5.5 6.3L17 17h-5l-3.7-4.8L4 17H1.5l5.9-6.7L1 3h5.1l3.4 4.5L14 3z"/></svg></a>
+        <a href="#"><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path d="M3 7h3v10H3zM4.5 3a1.7 1.7 0 100 3.4 1.7 1.7 0 000-3.4zM8 7h3v1.5c.5-1 1.7-1.7 3-1.7 2.4 0 3 1.5 3 3.7V17h-3v-5.5c0-1.3-.5-2-1.7-2-1.3 0-1.8.9-1.8 2V17H8z"/></svg></a>
+        <a href="#"><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 00-2.5 15.6c.4.1.5-.2.5-.4v-1.5c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.2 1.9.9 2.4.7.1-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-3.9 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.5.8 1.2.8 2.1 0 3-1.8 3.7-3.6 3.9.3.2.6.7.6 1.5v2.2c0 .2.1.5.5.4A8 8 0 0010 2z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
