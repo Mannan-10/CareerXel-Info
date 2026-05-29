@@ -10,21 +10,6 @@ export default function CTASection() {
   data-screen-label="07 CTA"
 >
   <div className="container cta-band">
-    <div className="sx-ribbon">
-      <span className="idx">
-        §07<span className="slash"> / </span>
-        <span className="name">GET STARTED</span>
-      </span>
-      <span>NO CARD · NO COMMITMENT</span>
-    </div>
-
-    <div
-      className="eyebrow"
-      style={{ justifyContent: "center", margin: "0 auto 18px" }}
-    >
-      START FREE
-    </div>
-
     <h2
       className="display"
       style={{ fontSize: "clamp(48px, 6.5vw, 80px)" }}
@@ -54,7 +39,7 @@ export default function CTASection() {
           <path d="M5 10h10M11 6l4 4-4 4" />
         </svg>
       </Link>
-      <Link className="btn btn-ghost" href="/about">
+      <Link className="btn btn-ghost" href="/contact">
         Talk to sales
       </Link>
     </div>
@@ -75,7 +60,7 @@ export default function CTASection() {
       className="mono"
       style={{ color: "var(--amber)", marginBottom: 4 }}
     >
-      ▢ HIRE REC
+      HIRE REC
     </div>
     <div style={{ fontSize: 13, fontWeight: 500 }}>STRONG · 92/100</div>
   </div>
@@ -94,7 +79,7 @@ export default function CTASection() {
       className="mono"
       style={{ color: "var(--d-3)", marginBottom: 4 }}
     >
-      ▢ MATCHES
+      MATCHES
     </div>
     <div style={{ fontSize: 13 }}>12 new today</div>
   </div>
@@ -113,7 +98,7 @@ export default function CTASection() {
       className="mono"
       style={{ color: "var(--d-3)", marginBottom: 6 }}
     >
-      ▢ PIPELINE
+      PIPELINE
     </div>
     <div style={{ display: "flex", gap: 4 }}>
       <span
@@ -159,7 +144,7 @@ export default function CTASection() {
       className="mono"
       style={{ color: "var(--amber)", marginBottom: 4 }}
     >
-      ▢ INTERVIEW
+      INTERVIEW
     </div>
     <div style={{ fontSize: 13 }}>Tomorrow · 3:00 IST</div>
   </div>

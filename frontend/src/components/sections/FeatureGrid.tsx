@@ -7,18 +7,6 @@ export default function FeatureGrid() {
   data-screen-label="02 Capabilities"
 >
   <div className="container">
-    <div className="sx-ribbon">
-      <span className="idx">
-        §02<span className="slash"> / </span>
-        <span className="name">CAPABILITIES</span>
-      </span>
-      <span>SIX MODULES · ONE GRAPH</span>
-    </div>
-
-    <div className="eyebrow" style={{ marginBottom: 18 }}>
-      CAPABILITIES
-    </div>
-
     <h2 className="h-section" style={{ color: "var(--d-1)" }}>
       Everything you need.
       <br />

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useMemo, useRef, useState } from "react";
-import SignalBar from "@/components/sections/SignalBar";
 import Carousel from "@/components/ui/Carousel";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import BackToTop from "@/components/ui/BackToTop";
@@ -20,6 +19,61 @@ const categories = [
   { label: "AI & Methodology", id: "AI" },
   { label: "Customer Stories", id: "Stories" },
   { label: "Product", id: "Product" },
+];
+
+const defaultFallbackResources: ResourceItem[] = [
+  {
+    id: 991,
+    title: "How we calibrate the scoring engine — every month, against real outcomes",
+    slug: "calibrate-scoring-engine",
+    description: "Most interview-AI vendors run a model and never look back. We started with the opposite assumption: any model that doesn't track its own predictions against real hires is going to drift. Here's the loop we built, the metrics we publish, and what we do when fairness regresses.",
+    category: "AI",
+    resourceType: "article",
+    publishedDate: "APR 2026",
+    readTime: "14 MIN READ",
+    authorName: "CareerXel Team",
+    isFeatured: true,
+    order: 1
+  },
+  {
+    id: 992,
+    title: "The 2026 Indian campus placement report — 47 colleges, 23k offers, open data",
+    slug: "indian-campus-placement-report-2026",
+    description: "Year-over-year placement rates, package distributions, recruiter mix. Free for download.",
+    category: "Placements",
+    resourceType: "dataset",
+    downloadFormat: "PUBLIC",
+    publishedDate: "APR 2026",
+    readTime: "CSV · XLSX · PDF",
+    isFeatured: true,
+    order: 2
+  },
+  {
+    id: 993,
+    title: "Bulk cohort onboarding in 5 days — the placement officer's checklist",
+    slug: "bulk-cohort-onboarding-checklist",
+    description: "The same checklist Riverbend used to onboard 412 students in a single afternoon.",
+    category: "Placements",
+    resourceType: "playbook",
+    downloadFormat: "PRINT",
+    publishedDate: "MAR 2026",
+    readTime: "PDF · 12 PAGES",
+    isFeatured: true,
+    order: 3
+  },
+  {
+    id: 994,
+    title: "Hiring through 2026 — what 340 employers told us",
+    slug: "hiring-through-2026-employer-insights",
+    description: "50-min recorded panel with talent leads from Stripe, Helix, Quanta. Slides included.",
+    category: "Hiring",
+    resourceType: "webinar",
+    downloadFormat: "REPLAY",
+    publishedDate: "MAR 2026",
+    readTime: "REPLAY",
+    isFeatured: true,
+    order: 4
+  }
 ];
 
 export default function ResourcesContent({ resources }: ResourcesContentProps) {
@@ -66,26 +120,65 @@ export default function ResourcesContent({ resources }: ResourcesContentProps) {
     );
   };
 
-  const featuredResources = useMemo(() => {
-    return resources
-      .filter((resource) => resource.isFeatured)
-      .sort((a, b) => a.order - b.order);
+  const activeResources = useMemo(() => {
+    return resources && resources.length > 0 ? resources : defaultFallbackResources;
   }, [resources]);
 
+  const featuredResources = useMemo(() => {
+    const featured = activeResources
+      .filter((resource) => resource.isFeatured)
+      .sort((a, b) => a.order - b.order);
+    return featured.length > 0 ? featured : defaultFallbackResources.filter(r => r.isFeatured);
+  }, [activeResources]);
+
+  const mainFeatured = useMemo(() => {
+    return (
+      featuredResources.find((resource) => resource.resourceType === "article") ||
+      activeResources.find((resource) => resource.resourceType === "article") ||
+      activeResources[0]
+    );
+  }, [featuredResources, activeResources]);
+
+  const sideFeatured = useMemo(() => {
+    const preferredSideCards = featuredResources.filter(
+      (resource) => resource.id !== mainFeatured?.id
+    );
+
+    const fallbackSideCards = activeResources.filter(
+      (resource) =>
+        resource.id !== mainFeatured?.id &&
+        ["dataset", "playbook", "webinar", "guide"].includes(resource.resourceType)
+    );
+
+    const combined = [...preferredSideCards];
+    fallbackSideCards.forEach(item => {
+      if (combined.length < 3 && !combined.some(c => c.id === item.id)) {
+        combined.push(item);
+      }
+    });
+    defaultFallbackResources.forEach(item => {
+      if (combined.length < 3 && item.id !== mainFeatured?.id && !combined.some(c => c.id === item.id)) {
+        combined.push(item);
+      }
+    });
+
+    return combined.sort((a, b) => a.order - b.order).slice(0, 3);
+  }, [featuredResources, activeResources, mainFeatured]);
+
   const articles = useMemo(() => {
-    return resources
+    return activeResources
       .filter((resource) =>
         ["article", "dataset", "playbook", "webinar", "guide"].includes(
           resource.resourceType
         )
       )
       .sort((a, b) => {
-        const dateA = a.publishedDate || a.publishedDate || "";
-        const dateB = b.publishedDate || b.publishedDate || "";
+        const dateA = a.publishedDate || "";
+        const dateB = b.publishedDate || "";
 
         return new Date(dateB).getTime() - new Date(dateA).getTime();
       });
-  }, [resources]);
+  }, [activeResources]);
 
   const filteredArticles = useMemo(() => {
     if (activeCategory === "All") {
@@ -128,7 +221,7 @@ export default function ResourcesContent({ resources }: ResourcesContentProps) {
               ✕ CLOSE
             </button>
             <div className="mono" style={{ fontSize: "10px", color: "var(--amber)", letterSpacing: "0.12em", marginBottom: "8px" }}>
-              ▢ WEBINAR · ON-DEMAND REPLAY
+              WEBINAR · ON-DEMAND REPLAY
             </div>
             <h3 style={{ margin: "0 0 12px", fontSize: "18px", lineHeight: "1.35", color: "var(--d-1)" }}>{activeWebinar}</h3>
             <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "16px" }}>
@@ -153,7 +246,7 @@ export default function ResourcesContent({ resources }: ResourcesContentProps) {
                 className="v-pill active"
                 style={{ flex: 1, border: "none", cursor: "pointer", padding: "10px" }}
               >
-                ▢ ACCESS REPLAY
+                ACCESS REPLAY
               </button>
               <button
                 onClick={() => setActiveWebinar(null)}
@@ -167,28 +260,15 @@ export default function ResourcesContent({ resources }: ResourcesContentProps) {
         </div>
       ) : null}
 
-      <SignalBar />
-
       <section
         className="dark-mesh"
         id="featured"
-        style={{ padding: "96px 0 80px" }}
+        style={{ padding: "64px 0 48px" }}
       >
         <div className="container">
           <Breadcrumbs />
 
-          <div className="sx-ribbon">
-            <span className="idx">
-              §00<span className="slash"> / </span>
-              <span className="name">RESOURCES</span>
-            </span>
-            <span>FIELD NOTES · GUIDES · DATA</span>
-          </div>
-
           <div className="serif-kicker">Field notes from the front lines.</div>
-          <div className="eyebrow" style={{ marginTop: "18px" }}>
-            RESOURCES
-          </div>
 
           <h1 className="display mt-24" style={{ maxWidth: "1100px" }}>
             <span className="bone-grad">What we&apos;ve learned</span>
@@ -197,225 +277,239 @@ export default function ResourcesContent({ resources }: ResourcesContentProps) {
           </h1>
 
           <p className="subhead">
-            Long-form essays, playbooks, public datasets, webinars. No SEO
-            sludge, no &quot;10 tips for your career.&quot; Things our partners
-            actually read.
+            Long-form essays, playbooks, public datasets, webinars. No SEO sludge,
+            no &quot;10 tips for your career.&quot; Things our partners actually read.
           </p>
 
-          <div className="rule-label" style={{ marginTop: "64px" }}>
-            EDITOR&apos;S PICKS · FEATURED
+          <div className="rule-label" style={{ marginTop: "48px" }}>
+            EDITOR&apos;S PICKS · WEEK 28
           </div>
 
-          <div style={{ marginTop: "40px" }}>
-            <Carousel
-              slidesToShow={1}
-              showDots={true}
-              showArrows={true}
-              autoPlay={false}
-            >
-              {featuredResources.map((resource) => {
-                const isWebinar = resource.resourceType === "webinar";
-                const isDownload =
-                  resource.resourceType === "dataset" ||
-                  resource.resourceType === "playbook" ||
-                  resource.resourceType === "guide";
-
-                return (
-                  <article
-                    key={resource.documentId || resource.id}
-                    className={
-                      resource.resourceType === "article"
-                        ? "feat-card"
-                        : "side-card"
-                    }
+          {mainFeatured ? (
+            <div className="feat-grid">
+              {/* Left Big Editor Pick */}
+              <article className="feat-card">
+                <div className="head-art">
+                  <svg
+                    viewBox="0 0 600 340"
                     style={{
+                      width: "100%",
                       height: "100%",
-                      margin: "0 auto",
-                      maxWidth: "900px",
-                      minHeight: "440px",
-                      padding:
-                        resource.resourceType === "article" ? undefined : "40px",
-                      display:
-                        resource.resourceType === "article" ? undefined : "flex",
-                      flexDirection:
-                        resource.resourceType === "article"
-                          ? undefined
-                          : "column",
-                      justifyContent:
-                        resource.resourceType === "article"
-                          ? undefined
-                          : "center",
-                    }}
-                    onClick={() => {
-                      if (isWebinar) {
-                        setActiveWebinar(resource.title);
-                      } else if (isDownload) {
-                        handleDownload(
-                          resource.title,
-                          resource.downloadFormat || resource.resourceType
-                        );
-                      }
+                      position: "relative",
                     }}
                   >
-                    {resource.resourceType === "article" && (
-                      <>
-                        <div className="head-art">
-                          <svg
-                            viewBox="0 0 600 340"
-                            style={{
-                              width: "100%",
-                              height: "100%",
-                              position: "relative",
-                            }}
-                          >
-                            <g
-                              stroke="rgba(74,139,255,0.4)"
-                              strokeWidth="1"
-                              fill="none"
-                            >
-                              <circle cx="300" cy="170" r="140" />
-                              <circle cx="300" cy="170" r="100" />
-                              <circle cx="300" cy="170" r="60" />
-                            </g>
-                            <g fill="#4A8BFF">
-                              <circle
-                                cx="300"
-                                cy="30"
-                                r="4"
-                                onMouseEnter={() => setActiveFeatMetric("FAIRNESS")}
-                              />
-                              <circle
-                                cx="440"
-                                cy="170"
-                                r="4"
-                                onMouseEnter={() =>
-                                  setActiveFeatMetric("CALIBRATION")
-                                }
-                              />
-                              <circle
-                                cx="160"
-                                cy="170"
-                                r="4"
-                                onMouseEnter={() =>
-                                  setActiveFeatMetric("EXPLAINABILITY")
-                                }
-                              />
-                              <circle
-                                cx="300"
-                                cy="310"
-                                r="4"
-                                onMouseEnter={() => setActiveFeatMetric("OUTCOMES")}
-                              />
-                              <circle cx="300" cy="170" r="6" fill="#2A5FD9" />
-                            </g>
-                            <text
-                              x="300"
-                              y="174"
-                              textAnchor="middle"
-                              fontFamily="Fraunces"
-                              fontSize="22"
-                              fill="#C2D8FF"
-                            >
-                              CXL-V4
-                            </text>
-                          </svg>
-                        </div>
+                    <g stroke="rgba(74,139,255,0.4)" strokeWidth="1" fill="none">
+                      <circle cx="300" cy="170" r="140" />
+                      <circle cx="300" cy="170" r="100" />
+                      <circle cx="300" cy="170" r="60" />
+                    </g>
 
-                        <div
-                          style={{
-                            background: "rgba(0,0,0,0.3)",
-                            padding: "10px 14px",
-                            border: "1px solid var(--border-d)",
-                            borderRadius: "8px",
-                            fontSize: "12px",
-                            color: "var(--d-2)",
-                          }}
-                        >
-                          <span
-                            className="mono"
-                            style={{
-                              fontSize: "9px",
-                              color: "var(--amber)",
-                              display: "block",
-                              marginBottom: "2px",
-                              fontWeight: "bold",
-                            }}
-                          >
-                            METHODOLOGY COMPLIANCE: {activeFeatMetric}
-                          </span>
-                          {featMetrics[activeFeatMetric]}
-                        </div>
-                      </>
-                    )}
+                    <g fill="#4A8BFF">
+                      <circle
+                        cx="300"
+                        cy="30"
+                        r="4"
+                        className="node-circle cursor-pointer"
+                        onMouseEnter={() => setActiveFeatMetric("FAIRNESS")}
+                      />
+                      <circle
+                        cx="440"
+                        cy="170"
+                        r="4"
+                        className="node-circle cursor-pointer"
+                        onMouseEnter={() => setActiveFeatMetric("CALIBRATION")}
+                      />
+                      <circle
+                        cx="160"
+                        cy="170"
+                        r="4"
+                        className="node-circle cursor-pointer"
+                        onMouseEnter={() => setActiveFeatMetric("EXPLAINABILITY")}
+                      />
+                      <circle
+                        cx="300"
+                        cy="310"
+                        r="4"
+                        className="node-circle cursor-pointer"
+                        onMouseEnter={() => setActiveFeatMetric("OUTCOMES")}
+                      />
+                      <circle cx="300" cy="170" r="6" fill="#2A5FD9" />
+                    </g>
 
-                    <div className="meta" style={{ marginTop: "16px" }}>
-                      <span className="pill amber">
-                        ▢ {resource.resourceType.toUpperCase()}
-                      </span>
-                      <span className="pill">{resource.category}</span>
-                      <span className="pill">{resource.readTime}</span>
+                    <g
+                      fontFamily="JetBrains Mono"
+                      fontSize="10"
+                      letterSpacing="0.1em"
+                      fill="#C2D8FF"
+                    >
+                      <text x="300" y="20" textAnchor="middle">
+                        FAIRNESS
+                      </text>
+                      <text x="455" y="174" textAnchor="start">
+                        CALIBRATION
+                      </text>
+                      <text x="145" y="174" textAnchor="end">
+                        EXPLAINABILITY
+                      </text>
+                      <text x="300" y="328" textAnchor="middle">
+                        OUTCOMES
+                      </text>
+                    </g>
+
+                    <text
+                      x="300"
+                      y="174"
+                      textAnchor="middle"
+                      fontFamily="Fraunces"
+                      fontSize="22"
+                      fill="#C2D8FF"
+                    >
+                      CXL-V4
+                    </text>
+                  </svg>
+                </div>
+
+                <div
+                  style={{
+                    background: "rgba(0,0,0,0.3)",
+                    padding: "10px 14px",
+                    border: "1px solid var(--border-d)",
+                    borderRadius: "8px",
+                    fontSize: "12px",
+                    color: "var(--d-2)",
+                  }}
+                >
+                  <span
+                    className="mono"
+                    style={{
+                      fontSize: "9px",
+                      color: "var(--amber)",
+                      display: "block",
+                      marginBottom: "2px",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    METHODOLOGY COMPLIANCE: {activeFeatMetric}
+                  </span>
+                  {featMetrics[activeFeatMetric]}
+                </div>
+
+                <div className="meta">
+                  <span className="pill amber">
+                    ▢ {mainFeatured.resourceType === "article" ? "ESSAY" : mainFeatured.resourceType.toUpperCase()}
+                  </span>
+                  <span className="pill">
+                    {mainFeatured.resourceType === "article" ? "METHODOLOGY" : (mainFeatured.downloadFormat || mainFeatured.category).toUpperCase()}
+                  </span>
+                  <span className="pill">
+                    {mainFeatured.readTime ? mainFeatured.readTime.toUpperCase() : ""}
+                  </span>
+                </div>
+
+                <h3>{mainFeatured.title}</h3>
+                <p>{mainFeatured.description}</p>
+
+                <div className="auth">
+                  <div className="av">
+                    {(mainFeatured.authorName || "CX")
+                      .split(" ")
+                      .map((word) => word[0])
+                      .join("")
+                      .slice(0, 2)
+                      .toUpperCase()}
+                  </div>
+
+                  <div>
+                    <div className="nm">
+                      {mainFeatured.authorName || "CareerXel Team"}
+                      {mainFeatured.authorRole ? ` · ${mainFeatured.authorRole}` : ""}
                     </div>
+                    <div className="when">
+                      {mainFeatured.publishedDate} · {mainFeatured.readTime}
+                    </div>
+                  </div>
+                </div>
+              </article>
 
-                    <h3>{resource.title}</h3>
-                    <p>{resource.description}</p>
+              {/* Right 3 Cards */}
+              <div className="side-feat">
+                {sideFeatured.map((resource) => {
+                  const isWebinar = resource.resourceType === "webinar";
 
-                    <div className="auth">
-                      <div className="av">
-                        {(resource.authorName || "CX")
-                          .split(" ")
-                          .map((word) => word[0])
-                          .join("")
-                          .slice(0, 2)
-                          .toUpperCase()}
+                  const isDownload =
+                    resource.resourceType === "dataset" ||
+                    resource.resourceType === "playbook" ||
+                    resource.resourceType === "guide";
+
+                  return (
+                    <article
+                      key={resource.documentId || resource.id}
+                      className="side-card"
+                      onClick={() => {
+                        if (isWebinar) {
+                          setActiveWebinar(resource.title);
+                        } else if (isDownload) {
+                          handleDownload(
+                            resource.title,
+                            resource.downloadFormat || resource.resourceType
+                          );
+                        }
+                      }}
+                    >
+                      <div className="meta">
+                        <span className="pill amber">
+                          ▢ {resource.resourceType.toUpperCase()}
+                        </span>
+
+                        <span className="pill">
+                          {isWebinar
+                            ? "REPLAY"
+                            : resource.downloadFormat || resource.category}
+                        </span>
                       </div>
 
-                      <div>
-                        <div className="nm">
-                          {resource.authorName || "CareerXel Team"}
-                          {resource.authorRole
-                            ? ` · ${resource.authorRole}`
-                            : ""}
-                        </div>
-                        <div className="when">
-                          {resource.publishedDate} · {resource.readTime}
-                        </div>
+                      <h4>{resource.title}</h4>
+
+                      <p>{resource.description}</p>
+
+                      <div className="when">
+                        ▢ {resource.publishedDate} · {resource.readTime}
+                        {isWebinar ? " · CLICK TO VIEW REPLAY" : ""}
+                        {isDownload ? " · CLICK TO EXPORT" : ""}
                       </div>
+                    </article>
+                  );
+                })}
+
+                {!sideFeatured.length && (
+                  <div className="side-card">
+                    <div className="meta">
+                      <span className="pill amber">▢ EMPTY</span>
                     </div>
-                  </article>
-                );
-              })}
-            </Carousel>
-          </div>
+                    <h4>No side resources found</h4>
+                    <p>
+                      Add dataset, playbook, webinar, or guide resources in Strapi and set
+                      them active.
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : (
+            <p style={{ color: "var(--d-2)", marginTop: "32px" }}>
+              No resources found. Please publish at least one resource in Strapi.
+            </p>
+          )}
         </div>
       </section>
 
       <section className="light section" id="blog">
         <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx" style={{ color: "var(--l-2)" }}>
-              §01<span className="slash"> / </span>
-              <span className="name">BLOG</span>
-            </span>
-            <span
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "11px",
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                color: "var(--l-2)",
-              }}
-            >
-              FRESH · FIELD NOTES · ESSAYS
-            </span>
-          </div>
-
-          <div className="section-header">
-            <div className="eyebrow">BLOG</div>
-            <h2 className="h-section" style={{ marginTop: "18px" }}>
-              Read the latest.
-              <br />
-              <span className="muted-weight">Skip the rest.</span>
-            </h2>
+          <div className="section-header">            <h2 className="h-section" style={{ marginTop: "18px" }}>
+            Read the latest.
+            <br />
+            <span className="muted-weight">Skip the rest.</span>
+          </h2>
           </div>
 
           <div className="cat-bar">
@@ -442,7 +536,7 @@ export default function ResourcesContent({ resources }: ResourcesContentProps) {
                 <div className="thumb">
                   <div className="grid" />
                   <div className="glyph">{article.glyph || "CX"}</div>
-                  <span className="tag">▢ {article.category.toUpperCase()}</span>
+                  <span className="tag">{article.category.toUpperCase()}</span>
                 </div>
 
                 <div className="body">
@@ -473,21 +567,11 @@ export default function ResourcesContent({ resources }: ResourcesContentProps) {
 
       <section className="dark-mesh section" id="shelves">
         <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx">
-              §02<span className="slash"> / </span>
-              <span className="name">SHELVES</span>
-            </span>
-            <span>GUIDES · DOCS · WEBINARS</span>
-          </div>
-
-          <div className="section-header">
-            <div className="eyebrow">RESOURCE SHELVES</div>
-            <h2 className="h-section" style={{ marginTop: "18px" }}>
-              Browse by shelf.
-              <br />
-              <span className="muted-weight">Or by what&apos;s open in your tab.</span>
-            </h2>
+          <div className="section-header">            <h2 className="h-section" style={{ marginTop: "18px" }}>
+            Browse by shelf.
+            <br />
+            <span className="muted-weight">Or by what&apos;s open in your tab.</span>
+          </h2>
           </div>
 
           <p style={{ color: "var(--d-2)" }}>
@@ -496,86 +580,7 @@ export default function ResourcesContent({ resources }: ResourcesContentProps) {
           </p>
         </div>
       </section>
-
-      <section className="dark-mesh section" id="newsletter">
-        <div className="container">
-          <div className="news-card">
-            <div>
-              <div className="eyebrow" style={{ marginBottom: "14px" }}>
-                NEWSLETTER
-              </div>
-              <h3>
-                <span className="bone-grad">One email a month.</span>
-                <br />
-                <span className="muted-weight">No fluff. No promo.</span>
-              </h3>
-              <p
-                style={{
-                  color: "var(--d-2)",
-                  marginTop: "18px",
-                  fontSize: "14.5px",
-                  lineHeight: "1.6",
-                  maxWidth: "380px",
-                }}
-              >
-                Field notes from our team, the latest essays, and the one chart
-                from each placement report you&apos;ll actually want to read.
-              </p>
-            </div>
-
-            {newsletterSubscribed ? (
-              <div
-                style={{
-                  background: "rgba(0,0,0,0.25)",
-                  border: "1px dashed var(--amber)",
-                  borderRadius: "12px",
-                  padding: "28px",
-                  textAlign: "center",
-                }}
-              >
-                <h4
-                  style={{
-                    margin: 0,
-                    fontFamily: "var(--font-display)",
-                    fontWeight: 300,
-                    fontSize: "22px",
-                    color: "var(--amber)",
-                  }}
-                >
-                  ✓ Subscribed successfully!
-                </h4>
-              </div>
-            ) : (
-              <form className="news-form" onSubmit={handleNewsletterSubmit}>
-                <div className="row2">
-                  <div className="field">
-                    <label>First name</label>
-                    <input
-                      type="text"
-                      placeholder="Priya"
-                      required
-                      value={newsletterName}
-                      onChange={(e) => setNewsletterName(e.target.value)}
-                    />
-                  </div>
-
-                  <div className="field">
-                    <label>Last name</label>
-                    <input type="text" placeholder="Khurana" required />
-                  </div>
-                </div>
-
-                <div className="field">
-                  <label>Work email</label>
-                  <input type="email" placeholder="priya@company.com" required />
-                </div>
-
-                <button type="submit">▢ SUBSCRIBE</button>
-              </form>
-            )}
-          </div>
-        </div>
-      </section>
     </main>
   );
 }
+

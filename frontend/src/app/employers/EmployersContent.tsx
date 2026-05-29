@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from "react";
-import SignalBar from "@/components/sections/SignalBar";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import "./employers.css";
 
@@ -223,30 +222,21 @@ export default function EmployersContent() {
 
   return (
     <main>
-      <SignalBar />
-
       {/* §00 HERO */}
       <section className="dark-mesh p-hero" data-screen-label="00 Hero">
         <div className="container">
-          <Breadcrumbs />
-          <div className="sx-ribbon">
-            <span className="idx">§00<span className="slash"> / </span><span className="name">FOR EMPLOYERS</span></span>
-            <span>HIRE WITHOUT THE CHAOS</span>
-          </div>
-          <div className="p-hero-grid">
+          <Breadcrumbs />          <div className="p-hero-grid">
             <div>
-              <div className="serif-kicker">Hiring, without the chaos.</div>
-              <div className="eyebrow" style={{ marginTop: "18px" }}>FOR EMPLOYERS</div>
-              <h1 className="display mt-24">
+              <div className="serif-kicker">Hiring, without the chaos.</div>              <h1 className="display mt-24">
                 <span className="bone-grad">Source. Screen. Hire.</span><br />
                 <span className="muted-weight">Without the chaos.</span>
               </h1>
               <p className="subhead">A full-stack ATS with AI mock interviews and proctoring built in. Configure once, hire 24/7 — and trust the scoring.</p>
               <div className="flex gap-12 mt-32">
-                <a className="btn btn-primary" href="#">Start free trial
+                <a className="btn btn-primary" href="/pricing">Start free trial
                   <svg className="icon" viewBox="0 0 20 20"><path d="M5 10h10M11 6l4 4-4 4" /></svg>
                 </a>
-                <a className="btn btn-ghost" href="#">Talk to sales</a>
+                <a className="btn btn-ghost" href="/contact">Talk to sales</a>
               </div>
             </div>
             <div className="p-hero-mock">
@@ -282,11 +272,11 @@ export default function EmployersContent() {
                 </div>
               </div>
               <div className="frag" style={{ top: "8%", left: "-22%", transform: "rotate(-5deg)", maxWidth: "220px" }}>
-                <div className="mono" style={{ color: "var(--amber)", marginBottom: "4px" }}>▢ HIRE REC</div>
+                <div className="mono" style={{ color: "var(--amber)", marginBottom: "4px" }}>HIRE REC</div>
                 <div style={{ fontSize: "14px", fontWeight: 500 }}>STRONG · 92/100</div>
               </div>
               <div className="frag" style={{ bottom: "10%", right: "-18%", transform: "rotate(4deg)", maxWidth: "220px" }}>
-                <div className="mono" style={{ color: "var(--d-3)", marginBottom: "4px" }}>▢ INTERVIEW</div>
+                <div className="mono" style={{ color: "var(--d-3)", marginBottom: "4px" }}>INTERVIEW</div>
                 <div style={{ fontSize: "13px", color: "var(--d-1)" }}>Tomorrow · 14:00 IST</div>
                 <div style={{ fontSize: "11px", color: "var(--d-3)", marginTop: "2px" }}>P. Khurana · Sr Frontend</div>
               </div>
@@ -297,14 +287,7 @@ export default function EmployersContent() {
 
       {/* §01 POSTINGS */}
       <section className="dark-mesh section">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx">§01<span className="slash"> / </span><span className="name">POSTINGS</span></span>
-            <span>EDITOR · PUBLIC PAGE</span>
-          </div>
-          <div className="section-header">
-            <div className="eyebrow">POSTINGS</div>
-            <h2 className="h-section" style={{ marginTop: "18px" }}>
+        <div className="container">          <div className="section-header">            <h2 className="h-section" style={{ marginTop: "18px" }}>
               Job posts that look<br />
               <span className="muted-weight">like the brand they represent.</span>
             </h2>
@@ -316,27 +299,27 @@ export default function EmployersContent() {
                 <span className="mono" style={{ color: "var(--d-3)", marginLeft: "auto" }}>JOB EDITOR</span>
               </div>
               <div className="body">
-                <div className="field"><div className="l">▢ ROLE TITLE</div><div className="v">Senior Frontend Engineer</div></div>
+                <div className="field"><div className="l">ROLE TITLE</div><div className="v">Senior Frontend Engineer</div></div>
                 <div className="field-row">
-                  <div className="field"><div className="l">▢ DEPT</div><div className="v">Engineering</div></div>
-                  <div className="field"><div className="l">▢ MODE</div><div className="v">Remote</div></div>
+                  <div className="field"><div className="l">DEPT</div><div className="v">Engineering</div></div>
+                  <div className="field"><div className="l">MODE</div><div className="v">Remote</div></div>
                 </div>
                 <div className="field-row">
-                  <div className="field amber"><div className="l">▢ SALARY MIN</div><div className="v">$180,000</div></div>
-                  <div className="field amber"><div className="l">▢ SALARY MAX</div><div className="v">$220,000</div></div>
+                  <div className="field amber"><div className="l">SALARY MIN</div><div className="v">$180,000</div></div>
+                  <div className="field amber"><div className="l">SALARY MAX</div><div className="v">$220,000</div></div>
                 </div>
-                <div className="field"><div className="l">▢ LOCATIONS</div><div className="v">Remote · NYC · Bengaluru · Berlin</div></div>
-                <div className="field"><div className="l">▢ APPLICATION DEADLINE</div><div className="v">2026-06-30 · 23:59 IST</div></div>
-                <div className="field"><div className="l">▢ DESCRIPTION</div><div className="v" style={{ lineHeight: "1.5" }}>Build perf-critical UI used by millions. React, TypeScript, Edge SSR, design systems…</div></div>
+                <div className="field"><div className="l">LOCATIONS</div><div className="v">Remote · NYC · Bengaluru · Berlin</div></div>
+                <div className="field"><div className="l">APPLICATION DEADLINE</div><div className="v">2026-06-30 · 23:59 IST</div></div>
+                <div className="field"><div className="l">DESCRIPTION</div><div className="v" style={{ lineHeight: "1.5" }}>Build perf-critical UI used by millions. React, TypeScript, Edge SSR, design systems…</div></div>
               </div>
             </div>
             <div className="mock brand-mock">
               <div className="mock-bar">
                 <span className="dot"></span><span className="dot"></span><span className="dot"></span>
-                <span className="mono" style={{ color: "var(--d-3)", marginLeft: "auto" }}>CAREERXEL.COM/HELIX</span>
+                <span className="mono" style={{ color: "var(--d-3)", marginLeft: "auto" }}>COMPANY CAREERS</span>
               </div>
               <div className="hero">
-                <div className="tag">▢ HELIX · ENGINEERING</div>
+                <div className="tag">HELIX · ENGINEERING</div>
                 <h6>Build the next generation of network infra.</h6>
               </div>
               <div className="body">
@@ -357,14 +340,7 @@ export default function EmployersContent() {
 
       {/* §02 ATS */}
       <section className="light section">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx" style={{ color: "var(--l-2)" }}>§02<span className="slash"> / </span><span className="name">ATS</span></span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--l-2)" }}>EVERY APPLICANT · IN CONTEXT</span>
-          </div>
-          <div className="section-header">
-            <div className="eyebrow">ATS</div>
-            <h2 className="h-section" style={{ marginTop: "18px" }}>
+        <div className="container">          <div className="section-header">            <h2 className="h-section" style={{ marginTop: "18px" }}>
               Every applicant,<br /><span className="muted-weight">in context.</span>
             </h2>
           </div>
@@ -383,10 +359,10 @@ export default function EmployersContent() {
             </div>
 
             <div className="filters">
-              <span className="f on" style={{ cursor: "default" }}>▢ SR FRONTEND · 248</span>
-              <span className={`f cursor-pointer ${filterScreenOnly ? "on" : ""}`} onClick={() => setFilterScreenOnly(prev => !prev)}>▢ SCREEN STAGE</span>
-              <span className={`f cursor-pointer ${filterRemoteOnly ? "on" : ""}`} onClick={() => setFilterRemoteOnly(prev => !prev)}>▢ REMOTE SPEC</span>
-              <span className={`f cursor-pointer ${filterScore80 ? "on" : ""}`} onClick={() => setFilterScore80(prev => !prev)}>▢ SCORE 80+</span>
+              <span className="f on" style={{ cursor: "default" }}>SR FRONTEND · 248</span>
+              <span className={`f cursor-pointer ${filterScreenOnly ? "on" : ""}`} onClick={() => setFilterScreenOnly(prev => !prev)}>SCREEN STAGE</span>
+              <span className={`f cursor-pointer ${filterRemoteOnly ? "on" : ""}`} onClick={() => setFilterRemoteOnly(prev => !prev)}>REMOTE SPEC</span>
+              <span className={`f cursor-pointer ${filterScore80 ? "on" : ""}`} onClick={() => setFilterScore80(prev => !prev)}>SCORE 80+</span>
               <span className="f" style={{ opacity: 0.5 }}>+ ADD FILTER</span>
             </div>
             <div className="table">
@@ -442,9 +418,9 @@ export default function EmployersContent() {
                           <div className="col" style={{ borderLeft: "1px solid var(--border-l)", paddingLeft: "16px" }}>
                             <h6>WORKACTION PANEL</h6>
                             <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "8px" }}>
-                              <button onClick={(e) => { e.stopPropagation(); triggerToast(`Sent invitation to ${cand.name} for Round 2 technical screen.`, "ATS Pipeline"); }} className="v-pill active" style={{ fontSize: "10px", padding: "6px 10px", border: "none", textAlign: "center" }}>▢ INVITE ROUND 2</button>
-                              <button onClick={(e) => { e.stopPropagation(); triggerToast(`Sign-off completed. Dispatched premium offer letter to ${cand.name}!`, "ATS Pipeline"); }} className="v-pill active" style={{ fontSize: "10px", padding: "6px 10px", border: "none", background: "var(--success, #4A8C5C)", textAlign: "center" }}>▢ INITIATE OFFER</button>
-                              <button onClick={(e) => { e.stopPropagation(); triggerToast(`Marked ${cand.name} as declined. Deactivation email dispatched.`, "ATS Pipeline"); }} className="v-pill" style={{ fontSize: "10px", padding: "6px 10px", color: "var(--error)", borderColor: "rgba(196,69,69,0.3)", textAlign: "center" }}>▢ DECLINE APPLICATION</button>
+                              <button onClick={(e) => { e.stopPropagation(); triggerToast(`Sent invitation to ${cand.name} for Round 2 technical screen.`, "ATS Pipeline"); }} className="v-pill active" style={{ fontSize: "10px", padding: "6px 10px", border: "none", textAlign: "center" }}>INVITE ROUND 2</button>
+                              <button onClick={(e) => { e.stopPropagation(); triggerToast(`Sign-off completed. Dispatched premium offer letter to ${cand.name}!`, "ATS Pipeline"); }} className="v-pill active" style={{ fontSize: "10px", padding: "6px 10px", border: "none", background: "var(--success, #4A8C5C)", textAlign: "center" }}>INITIATE OFFER</button>
+                              <button onClick={(e) => { e.stopPropagation(); triggerToast(`Marked ${cand.name} as declined. Deactivation email dispatched.`, "ATS Pipeline"); }} className="v-pill" style={{ fontSize: "10px", padding: "6px 10px", color: "var(--error)", borderColor: "rgba(196,69,69,0.3)", textAlign: "center" }}>DECLINE APPLICATION</button>
                             </div>
                           </div>
                         </div>
@@ -454,7 +430,7 @@ export default function EmployersContent() {
                 })}
             </div>
             <div className="frag" style={{ background: "rgba(252,250,246,0.85)", color: "var(--l-1)", borderColor: "var(--border-l)", top: "12%", right: "-10%", transform: "rotate(4deg)", maxWidth: "220px" }}>
-              <div className="mono" style={{ color: "var(--burnt)", marginBottom: "4px" }}>▢ BULK UPLOAD</div>
+              <div className="mono" style={{ color: "var(--burnt)", marginBottom: "4px" }}>BULK UPLOAD</div>
               <div style={{ fontSize: "13px", fontWeight: 500 }}>247 resumes · 92% parsed</div>
             </div>
           </div>
@@ -463,14 +439,7 @@ export default function EmployersContent() {
 
       {/* §03 PIPELINE */}
       <section className="dark-mesh section">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx">§03<span className="slash"> / </span><span className="name">PIPELINE</span></span>
-            <span>SLOTS · CALENDAR · OFFER</span>
-          </div>
-          <div className="section-header">
-            <div className="eyebrow">PIPELINE</div>
-            <h2 className="h-section" style={{ marginTop: "18px" }}>
+        <div className="container">          <div className="section-header">            <h2 className="h-section" style={{ marginTop: "18px" }}>
               From slot<br /><span className="muted-weight">to signed offer.</span>
             </h2>
           </div>
@@ -572,15 +541,8 @@ export default function EmployersContent() {
       </section>
 
       {/* §04 AI INTERVIEWS — FEATURED */}
-      <section className="dark-mesh" style={{ padding: "144px 0" }}>
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx">§04<span className="slash"> / </span><span className="name">AI INTERVIEWS</span></span>
-            <span style={{ color: "var(--amber)" }}>FEATURED · CENTERPIECE</span>
-          </div>
-          <div className="serif-kicker">The interview, automated.</div>
-          <div className="eyebrow" style={{ marginTop: "18px" }}>AI INTERVIEWS · FEATURED</div>
-          <h2 className="display" style={{ fontSize: "clamp(48px, 6vw, 72px)", maxWidth: "1100px", marginTop: "24px" }}>
+      <section className="dark-mesh" style={{ padding: "80px 0" }}>
+        <div className="container">          <div className="serif-kicker">The interview, automated.</div>          <h2 className="display" style={{ fontSize: "clamp(48px, 6vw, 72px)", maxWidth: "1100px", marginTop: "24px" }}>
             <span className="bone-grad">Run technical interviews 24/7.</span><br />
             <span className="muted-weight">Without lifting a finger.</span>
           </h2>
@@ -593,7 +555,7 @@ export default function EmployersContent() {
             </div>
             <div className="grid">
               <div className="pane">
-                <h6>▢ CANDIDATE FEED</h6>
+                <h6>CANDIDATE FEED</h6>
                 <div className="video">
                   <div className="vid-meta"><span className="live">● REC 28:14</span><span>P. KHURANA</span></div>
                   <div className="silhouette">
@@ -603,7 +565,7 @@ export default function EmployersContent() {
                     </svg>
                   </div>
                 </div>
-                <div className="badge">▢ PROCTORING ACTIVE · 0 VIOLATIONS</div>
+                <div className="badge">PROCTORING ACTIVE · 0 VIOLATIONS</div>
                 <div className="code">
                   <div><span className="kw">function</span> rateLimiter(<span className="st">key</span>) {"{"}</div>
                   <div>&nbsp;&nbsp;<span className="kw">const</span> recent = bucket(<span className="st">key</span>);</div>
@@ -613,7 +575,7 @@ export default function EmployersContent() {
                 </div>
               </div>
               <div className="pane">
-                <h6>▢ INTERVIEWER · AI</h6>
+                <h6>INTERVIEWER · AI</h6>
                 <div style={{ background: "var(--surface-2)", border: "1px solid var(--border-d)", borderRadius: "8px", padding: "12px", flex: 1 }}>
                   <div className="mono" style={{ color: "var(--amber)", marginBottom: "8px", fontSize: "10px" }}>Q.07 / 12</div>
                   <div style={{ fontSize: "13px", color: "var(--d-1)", lineHeight: "1.5" }}>Walk me through how you'd design a token-bucket rate limiter for a public API serving 10M req/min. What are the failure modes?</div>
@@ -631,14 +593,14 @@ export default function EmployersContent() {
                 </div>
               </div>
               <div className="pane">
-                <h6>▢ AI SCORING</h6>
+                <h6>AI SCORING</h6>
                 <div className="scoring">
                   <div className="gauge"><div className="gh"><span>TECHNICAL</span><span>82</span></div><div className="bar"><div style={{ width: "82%" }}></div></div></div>
                   <div className="gauge"><div className="gh"><span>COMMUNICATION</span><span>74</span></div><div className="bar"><div style={{ width: "74%", background: "var(--burnt)" }}></div></div></div>
                   <div className="gauge"><div className="gh"><span>PROBLEM SOLVING</span><span>88</span></div><div className="bar"><div style={{ width: "88%" }}></div></div></div>
                   <div className="gauge"><div className="gh"><span>OVERALL</span><span>81</span></div><div className="bar"><div style={{ width: "81%" }}></div></div></div>
                   <div style={{ padding: "10px", background: "rgba(74,139,255,0.06)", border: "1px solid rgba(74,139,255,0.4)", borderRadius: "8px", marginTop: "4px" }}>
-                    <div className="mono" style={{ color: "var(--amber)", fontSize: "9px" }}>▢ HIRE REC</div>
+                    <div className="mono" style={{ color: "var(--amber)", fontSize: "9px" }}>HIRE REC</div>
                     <div style={{ fontSize: "14px", fontWeight: 500, marginTop: "4px" }}>STRONG · 92/100</div>
                   </div>
                 </div>
@@ -657,14 +619,7 @@ export default function EmployersContent() {
 
       {/* §05 REUSABILITY */}
       <section className="light section">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx" style={{ color: "var(--l-2)" }}>§05<span className="slash"> / </span><span className="name">REUSABILITY</span></span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--l-2)" }}>TEMPLATES · QUESTION BANKS · EMAILS</span>
-          </div>
-          <div className="section-header">
-            <div className="eyebrow">REUSABILITY</div>
-            <h2 className="h-section" style={{ marginTop: "18px" }}>
+        <div className="container">          <div className="section-header">            <h2 className="h-section" style={{ marginTop: "18px" }}>
               Templates that scale<br /><span className="muted-weight">with your hiring volume.</span>
             </h2>
           </div>
@@ -681,7 +636,7 @@ export default function EmployersContent() {
                     className={`li ${activeCategory === cat ? 'on' : ''}`}
                     onClick={() => setActiveCategory(cat)}
                   >
-                    ▢ {cat}
+                    {cat}
                   </div>
                 ))}
               </div>
@@ -703,14 +658,7 @@ export default function EmployersContent() {
 
       {/* §06 ANALYTICS */}
       <section className="dark-mesh section">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx">§06<span className="slash"> / </span><span className="name">ANALYTICS</span></span>
-            <span>FUNNEL · VELOCITY · SOURCES</span>
-          </div>
-          <div className="section-header">
-            <div className="eyebrow">ANALYTICS</div>
-            <h2 className="h-section" style={{ marginTop: "18px" }}>
+        <div className="container">          <div className="section-header">            <h2 className="h-section" style={{ marginTop: "18px" }}>
               Numbers your leadership<br /><span className="muted-weight">will actually read.</span>
             </h2>
           </div>
@@ -723,7 +671,7 @@ export default function EmployersContent() {
               <div className="kpi"><div className="l">TIME-TO-HIRE</div><div className="v">14d</div><div className="d">▼ 42%</div></div>
               <div className="kpi"><div className="l">QUALIFIED RATE</div><div className="v">68%</div><div className="d">▲ 11%</div></div>
               <div className="kpi panel-stretch" style={{ padding: "14px" }}>
-                <div className="l">▢ HIRE FUNNEL</div>
+                <div className="l">HIRE FUNNEL</div>
                 <div style={{ marginTop: "12px", display: "flex", flexDirection: "column", gap: "8px" }}>
                   <div><div style={{ display: "flex", justifyContent: "space-between", fontFamily: "var(--font-mono)", fontSize: "9px", letterSpacing: "0.15em", color: "var(--d-2)", marginBottom: "3px" }}><span>APPLIED</span><span>248</span></div><div style={{ height: "18px", background: "rgba(74,139,255,0.7)", borderRadius: "4px" }}></div></div>
                   <div><div style={{ display: "flex", justifyContent: "space-between", fontFamily: "var(--font-mono)", fontSize: "9px", letterSpacing: "0.15em", color: "var(--d-2)", marginBottom: "3px" }}><span>SCREEN</span><span>87</span></div><div style={{ height: "18px", background: "rgba(74,139,255,0.55)", borderRadius: "4px", width: "65%" }}></div></div>
@@ -752,17 +700,11 @@ export default function EmployersContent() {
 
       {/* §07 CTA */}
       <section className="cta-mesh page-cta" style={{ position: "relative", overflow: "hidden" }}>
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx">§07<span className="slash"> / </span><span className="name">GET STARTED</span></span>
-            <span>30-DAY FREE TRIAL</span>
-          </div>
-          <div className="eyebrow" style={{ justifyContent: "center", margin: "0 auto 18px" }}>START FREE TRIAL</div>
-          <h2 className="display"><span className="bone-grad">See CareerXel for your team.</span></h2>
+        <div className="container">          <h2 className="display"><span className="bone-grad">See CareerXel for your team.</span></h2>
           <p style={{ fontSize: "19px", color: "var(--d-2)", maxWidth: "600px", margin: "24px auto 0" }}>A 30-minute demo. Real data, real candidates, real time saved.</p>
           <div className="flex gap-12 mt-32" style={{ justifyContent: "center" }}>
-            <a className="btn btn-primary" href="#">Book a demo</a>
-            <a className="btn btn-ghost" href="#">Start free trial</a>
+            <a className="btn btn-primary" href="/contact">Book a demo</a>
+            <a className="btn btn-ghost" href="/pricing">Start free trial</a>
           </div>
         </div>
       </section>
@@ -783,7 +725,7 @@ export default function EmployersContent() {
               {getTemplateContent(selectedTemplate).body}
             </div>
             <div style={{ display: "flex", gap: "10px", marginTop: "8px" }}>
-              <button onClick={() => { setSelectedTemplate(null); triggerToast(`Successfully applied template: "${selectedTemplate.title}" into active talent pipeline!`, "Templates Library"); }} className="btn btn-primary" style={{ flex: 1, justifyContent: "center" }}>▢ USE THIS TEMPLATE</button>
+              <button onClick={() => { setSelectedTemplate(null); triggerToast(`Successfully applied template: "${selectedTemplate.title}" into active talent pipeline!`, "Templates Library"); }} className="btn btn-primary" style={{ flex: 1, justifyContent: "center" }}>USE THIS TEMPLATE</button>
               <button onClick={() => setSelectedTemplate(null)} className="btn btn-ghost">CANCEL</button>
             </div>
           </div>

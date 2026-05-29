@@ -2,7 +2,6 @@
 
 import React, { useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import SignalBar from "@/components/sections/SignalBar";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import "./PricingPageClient.css";
 
@@ -43,7 +42,10 @@ const comparisonFeatures: Record<Audience, { name: string; val1: string; val2: s
     { name: "AI Mock Sessions", val1: "2 sessions / month", val2: "Unlimited proctoring slots" },
     { name: "Audio Transcriptions", val1: "✓ (Standard)", val2: "✓ (High fidelity)" },
     { name: "Explainable ML Scoring", val1: "—", val2: "✓ (Full 12-dimension transcript trace)" },
-    { name: "Integration & Auth", val1: "Google Auth Only", val2: "Google, Phone OTP, SAML SSO" }
+    { name: "Integration & Auth", val1: "Google Auth Only", val2: "Google, Phone OTP, SAML SSO" },
+    { name: "Custom Career Roadmaps", val1: "—", val2: "✓ (AI-generated, role-pinned)" },
+    { name: "Resume Tailoring (JD Match)", val1: "Basic auto-tune", val2: "Full JD spec matching + ATS score" },
+    { name: "Mock Feedback Trace", val1: "—", val2: "✓ (Per-answer breakdown + replay)" }
   ],
   employer: [
     { name: "Active Job Postings", val1: "1 Active Slot", val2: "Unlimited Active Slots" },
@@ -51,7 +53,10 @@ const comparisonFeatures: Record<Audience, { name: string; val1: string; val2: s
     { name: "AI Screening & Proctoring", val1: "50 candidates / month", val2: "Unlimited proctored candidates" },
     { name: "Candidate video replay", val1: "—", val2: "✓ (Stored in secure S3 bucket)" },
     { name: "SAML SSO & SOC 2", val1: "—", val2: "✓ (SOC 2 Type II compliant)" },
-    { name: "Dedicated SLA Support", val1: "—", val2: "✓ (4-hour SLA live chat support)" }
+    { name: "Dedicated SLA Support", val1: "—", val2: "✓ (4-hour SLA live chat support)" },
+    { name: "Collaborative Hiring", val1: "1 recruiter seat", val2: "Unlimited seats + role-based permissions" },
+    { name: "AI Question Generators", val1: "—", val2: "✓ (Calibrated per JD + difficulty)" },
+    { name: "HRIS Integrations", val1: "—", val2: "✓ (Workday, BambooHR, Greenhouse)" }
   ],
   college: [
     { name: "Student Onboarding", val1: "Up to 500 students", val2: "Unlimited students & graduates" },
@@ -59,9 +64,14 @@ const comparisonFeatures: Record<Audience, { name: string; val1: string; val2: s
     { name: "Compliance Reports", val1: "✓ (Basic metrics)", val2: "✓ (Co-signed NAAC & NIRF standard)" },
     { name: "Isolated Database Tenant", val1: "—", val2: "✓ (Per-tenant isolated database)" },
     { name: "Unified LMS SSO integration", val1: "—", val2: "✓ (Moodle, Canvas, Blackboard)" },
-    { name: "Dedicated Support Officer", val1: "Email only (48h)", val2: "Phone, Chat & Video (4h SLA)" }
+    { name: "Dedicated Support Officer", val1: "Email only (48h)", val2: "Phone, Chat & Video (4h SLA)" },
+    { name: "Automated Placement Alerts", val1: "—", val2: "✓ (Live offer & rejection webhooks)" },
+    { name: "Verified Talent Badging", val1: "—", val2: "✓ (Blockchain-anchored credentials)" },
+    { name: "Alumni Network Gateway", val1: "—", val2: "✓ (Searchable alumni career graph)" }
   ]
 };
+
+
 
 export default function PricingPageClient({ plans }: PricingPageClientProps) {
   const [currentAud, setCurrentAud] = useState<Audience>("individual");
@@ -118,6 +128,12 @@ export default function PricingPageClient({ plans }: PricingPageClientProps) {
     },
   ];
 
+  const renderCell = (val: string) => {
+    if (val === "—") return <span className="tick-no">—</span>;
+    if (val.startsWith("✓")) return <span className="tick-yes">{val}</span>;
+    return val;
+  };
+
   return (
     <main>
       <div className="toast-container">
@@ -129,28 +145,11 @@ export default function PricingPageClient({ plans }: PricingPageClientProps) {
         ))}
       </div>
 
-      <SignalBar />
-
       <section className="dark-mesh" style={{ padding: "96px 0 64px" }}>
         <div className="container">
           <Breadcrumbs />
-          <div className="sx-ribbon">
-            <span className="idx">
-              §00<span className="slash"> / </span>
-              <span className="name">PRICING</span>
-            </span>
-            <span>HONEST · ITEMIZED · NO LOCK-IN</span>
-          </div>
-
           <div style={{ textAlign: "center", maxWidth: "800px", margin: "0 auto" }}>
             <div className="serif-kicker">No surprises. Ever.</div>
-            <div
-              className="eyebrow"
-              style={{ justifyContent: "center", margin: "18px auto 0" }}
-            >
-              PRICING
-            </div>
-
             <h1 className="display mt-24">
               <span className="bone-grad">Pay for what you ship,</span>
               <br />
@@ -232,7 +231,7 @@ export default function PricingPageClient({ plans }: PricingPageClientProps) {
                   {Object.entries(plan.features || {}).map(
                     ([section, items], index, array) => (
                       <React.Fragment key={section}>
-                        <div className="feat-l">▢ {section}</div>
+                        <div className="feat-l">{section}</div>
                         <ul>
                           {items.map((item) => (
                             <li key={item}>{item}</li>
@@ -260,14 +259,16 @@ export default function PricingPageClient({ plans }: PricingPageClientProps) {
               marginTop: "32px",
             }}
           >
-            ▢ ALL PLANS · NO CARD REQUIRED · CANCEL ANYTIME · DATA EXPORT
+            ALL PLANS · NO CARD REQUIRED · CANCEL ANYTIME · DATA EXPORT
             INCLUDED
           </p>
 
-          {/* Dynamic Feature Comparison Table */}
+          {/* ── Plan Feature Comparison Table ── */}
           <div className="comparison-sec" id="pricing-comparison-table-section">
             <div className="comparison-title">
-              <h2 className="h-section" style={{ fontSize: "28px", marginBottom: "8px" }} id="comparison-table-title">Compare plan features</h2>
+              <h2 className="h-section" style={{ fontSize: "28px", marginBottom: "8px" }} id="comparison-table-title">
+                Compare plan features
+              </h2>
               <p style={{ color: "var(--d-2)", fontSize: "14px" }}>
                 Dynamic breakdown for {audienceLabels[currentAud]} plans
               </p>
@@ -284,47 +285,24 @@ export default function PricingPageClient({ plans }: PricingPageClientProps) {
                 <tbody>
                   {comparisonFeatures[currentAud].map((feat) => (
                     <tr key={feat.name}>
-                      <td className="feature-name">▢ {feat.name}</td>
-                      <td className="val-col">
-                        {feat.val1 === "—" ? <span className="tick-no">—</span> : feat.val1.startsWith("✓") ? <span className="tick-yes">{feat.val1}</span> : feat.val1}
-                      </td>
-                      <td className="val-col">
-                        {feat.val2 === "—" ? <span className="tick-no">—</span> : feat.val2.startsWith("✓") ? <span className="tick-yes">{feat.val2}</span> : feat.val2}
-                      </td>
+                      <td className="feature-name">{feat.name}</td>
+                      <td className="val-col">{renderCell(feat.val1)}</td>
+                      <td className="val-col">{renderCell(feat.val2)}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
+
+
           </div>
         </div>
       </section>
 
       <section className="light section">
         <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx" style={{ color: "var(--l-2)" }}>
-              §03<span className="slash"> / </span>
-              <span className="name">FAQ</span>
-            </span>
-            <span
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "11px",
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                color: "var(--l-2)",
-              }}
-            >
-              PRICING · BILLING · LEGAL
-            </span>
-          </div>
-
           <div className="faq-grid">
             <div>
-              <div className="eyebrow" style={{ marginBottom: "18px" }}>
-                FAQ
-              </div>
               <h2
                 className="h-section"
                 style={{ fontSize: "clamp(32px, 4vw, 44px)" }}
@@ -343,7 +321,7 @@ export default function PricingPageClient({ plans }: PricingPageClientProps) {
               >
                 Still have questions?{" "}
                 <Link
-                  href="/about"
+                  href="/contact"
                   style={{
                     color: "var(--burnt)",
                     borderBottom: "1px solid currentColor",
@@ -384,21 +362,6 @@ export default function PricingPageClient({ plans }: PricingPageClientProps) {
         style={{ position: "relative", overflow: "hidden" }}
       >
         <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx">
-              §04<span className="slash"> / </span>
-              <span className="name">START</span>
-            </span>
-            <span>NO CARD REQUIRED</span>
-          </div>
-
-          <div
-            className="eyebrow"
-            style={{ justifyContent: "center", margin: "0 auto 18px" }}
-          >
-            START FREE
-          </div>
-
           <h2 className="display">
             <span className="bone-grad">Try it in your tab today.</span>
           </h2>
@@ -421,7 +384,7 @@ export default function PricingPageClient({ plans }: PricingPageClientProps) {
             <Link className="btn btn-primary" href="#">
               Start free
             </Link>
-            <Link className="btn btn-ghost" href="/about">
+            <Link className="btn btn-ghost" href="/contact">
               Talk to sales
             </Link>
           </div>

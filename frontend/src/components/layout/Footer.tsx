@@ -92,38 +92,17 @@ export default function Footer({ globalSetting }: FooterProps) {
                 <Link href="/about">About</Link>
               </li>
               <li>
-                <Link href="/about">Contact</Link>
+                <Link href="/contact">Contact</Link>
               </li>
               <li>
-                <Link href="#">Careers</Link>
-              </li>
-              <li>
-                <Link href="#">Press</Link>
-              </li>
-            </ul>
-          </div>
-
-          <div className="foot-col">
-            <h5>Legal</h5>
-            <ul>
-              <li>
-                <Link href="#">Privacy</Link>
-              </li>
-              <li>
-                <Link href="#">Terms</Link>
-              </li>
-              <li>
-                <Link href="#">Cookies</Link>
-              </li>
-              <li>
-                <Link href="#">Security</Link>
+                <Link href="/resources">Stories</Link>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="foot-bottom">
-          <span>© 2026 {globalSetting.siteName} · ALL RIGHTS RESERVED</span>
+          <span>© 2026 CareerXel · ALL RIGHTS RESERVED</span>
 
           <div className="foot-social">
             {globalSetting.twitterUrl && (

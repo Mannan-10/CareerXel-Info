@@ -12,10 +12,10 @@ export default function AudienceSection() {
       tag: "/RESUME-OS",
       mockup: (
         <div style={{ background: "var(--surface-2)", border: "1px solid var(--border-d)", borderRadius: "10px", padding: "16px", flex: 1, display: "flex", flexDirection: "column", gap: "8px" }}>
-          <div className="mono" style={{ color: "var(--amber)", fontSize: "9px" }}>▢ LIVE OPTIMIZING</div>
+          <div className="mono" style={{ color: "var(--amber)", fontSize: "9px" }}>LIVE OPTIMIZING</div>
           <div style={{ fontWeight: 500, fontSize: "14px", color: "var(--d-1)" }}>Stripe · Senior FE Spec</div>
           <div style={{ fontSize: "12px", color: "var(--d-2)", borderLeft: "2px solid var(--amber)", paddingLeft: "8px", fontStyle: "italic" }}>
-            "Scaled Edge SSR for 4M MAUs using Vercel. Standardized local rendering paths."
+            &ldquo;Scaled Edge SSR for 4M MAUs using Vercel. Standardized local rendering paths.&rdquo;
           </div>
           <div style={{ flex: 1 }}></div>
           <div className="mono" style={{ color: "var(--d-3)", fontSize: "8px" }}>ATS SCAN SCORE · 96% MATCH</div>
@@ -29,7 +29,7 @@ export default function AudienceSection() {
       tag: "/AI-PROCTORING",
       mockup: (
         <div style={{ background: "var(--surface-2)", border: "1px solid var(--border-d)", borderRadius: "10px", padding: "16px", flex: 1, display: "flex", flexDirection: "column", gap: "8px" }}>
-          <div className="mono" style={{ color: "var(--amber)", fontSize: "9px" }}>▢ PROCTORED SESSION 17</div>
+          <div className="mono" style={{ color: "var(--amber)", fontSize: "9px" }}>PROCTORED SESSION 17</div>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <span style={{ fontSize: "13px", color: "var(--d-1)" }}>Candidate Feed</span>
             <span className="mono" style={{ fontSize: "9px", color: "var(--amber)" }}>● REC 28:14</span>
@@ -42,41 +42,22 @@ export default function AudienceSection() {
       ),
     },
     {
-      title: "Batch Cohort Onboarding",
+      title: "Placement Analytics Dashboard",
       audience: "FOR COLLEGES",
-      desc: "Onboard thousands of students and placement logs in the time it takes to brew coffee. Real-time rosters and aggregates.",
-      tag: "/PLACEMENTS-ROSTER",
+      desc: "Track every cohort from onboarding to offer letter. Generate NAAC-ready PDF reports with a single click.",
+      tag: "/PLACEMENT-ANALYTICS",
       mockup: (
-        <div style={{ background: "var(--surface-2)", border: "1px solid var(--border-d)", borderRadius: "10px", padding: "16px", flex: 1, display: "flex", flexDirection: "column", gap: "8px" }}>
-          <div className="mono" style={{ color: "var(--amber)", fontSize: "9px" }}>▢ COHORT RIVERSIDE U</div>
-          <div style={{ display: "flex", gap: "8px" }}>
-            <div style={{ flex: 1, background: "var(--surface-3)", padding: "8px", borderRadius: "6px", textAlign: "center" }}>
-              <div style={{ fontSize: "9px", color: "var(--d-3)" }}>COHORT</div>
-              <div style={{ fontSize: "16px", fontWeight: "bold" }}>412</div>
-            </div>
-            <div style={{ flex: 1, background: "var(--surface-3)", padding: "8px", borderRadius: "6px", textAlign: "center" }}>
-              <div style={{ fontSize: "9px", color: "var(--d-3)" }}>PLACED</div>
-              <div style={{ fontSize: "16px", fontWeight: "bold", color: "var(--amber)" }}>72%</div>
-            </div>
+        <div style={{ background: "var(--surface-2)", border: "1px solid var(--border-d)", borderRadius: "10px", padding: "16px", flex: 1, display: "flex", flexDirection: "column", gap: "10px" }}>
+          <div className="mono" style={{ color: "var(--amber)", fontSize: "9px" }}>RIVERBEND U / CSE 2026</div>
+          <div style={{ display: "flex", gap: "10px" }}>
+            {[["PLACED", "84%", "var(--amber)"], ["AVG PKG", "₹14.8L", "var(--d-1)"], ["TOP", "₹62L", "var(--d-2)"]].map(([label, val, col]) => (
+              <div key={label} style={{ flex: 1, background: "var(--surface-3)", border: "1px solid var(--border-d)", borderRadius: "6px", padding: "8px" }}>
+                <div className="mono" style={{ color: "var(--d-3)", fontSize: "8px" }}>{label}</div>
+                <div style={{ fontSize: "13px", fontWeight: 500, color: col, marginTop: "2px" }}>{val}</div>
+              </div>
+            ))}
           </div>
-          <div className="mono" style={{ color: "var(--d-2)", fontSize: "8px" }}>✓ Batch CSE-2026 fully parsed</div>
-        </div>
-      ),
-    },
-    {
-      title: "Campus Benchmarks",
-      audience: "FOR COLLEGE GROUPS",
-      desc: "Aggregate metrics across all programs and campuses. Analyze highest LPA, placement rate trends, and accreditation records.",
-      tag: "/GROUP-DASHBOARD",
-      mockup: (
-        <div style={{ background: "var(--surface-2)", border: "1px solid var(--border-d)", borderRadius: "10px", padding: "16px", flex: 1, display: "flex", flexDirection: "column", gap: "8px" }}>
-          <div className="mono" style={{ color: "var(--amber)", fontSize: "9px" }}>▢ GROUP-WIDE VIEW</div>
-          <div style={{ fontSize: "12px", color: "var(--d-1)" }}>Top Placements:</div>
-          <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", fontSize: "10px", color: "var(--d-2)" }}><span>Riverbend Campus</span><span>72%</span></div>
-            <div style={{ display: "flex", justifyContent: "space-between", fontSize: "10px", color: "var(--d-2)" }}><span>Mercer Campus</span><span>68%</span></div>
-          </div>
-          <div className="mono" style={{ color: "var(--d-3)", fontSize: "8px", borderTop: "1px solid var(--border-d)", paddingTop: "4px" }}>AVG LPA · ₹14.8 Lakhs</div>
+          <div className="mono" style={{ color: "var(--d-3)", fontSize: "8px", marginTop: "4px" }}>PDF REPORT · READY TO EXPORT</div>
         </div>
       ),
     },
@@ -85,36 +66,10 @@ export default function AudienceSection() {
   return (
     <section className="light section" data-screen-label="01 Solutions">
       <div className="container">
-        <div className="rule-label" style={{ marginBottom: 48 }}>
-          SOLUTIONS
-        </div>
-
-        <div className="sx-ribbon">
-          <span className="idx">
-            §01<span className="slash"> / </span>
-            <span className="name">SOLUTIONS</span>
-          </span>
-          <span
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 11,
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-              color: "var(--l-2)",
-            }}
-          >
-            FOUR AUDIENCES · ONE PLATFORM
-          </span>
-        </div>
-
-        <div className="eyebrow" style={{ marginBottom: 18 }}>
-          BUILT FOR FOUR AUDIENCES
-        </div>
-
         <h2 className="h-section">
           One platform.
           <br />
-          <span className="muted-weight">Four ways to win.</span>
+          <span className="muted-weight">Three ways to win.</span>
         </h2>
 
         <div className="aud-grid" style={{ marginBottom: "64px" }}>
@@ -201,14 +156,14 @@ export default function AudienceSection() {
                 }}
               >
                 <svg className="icon" viewBox="0 0 20 20">
-                  <path d="M2 8l8-4 8 4-8 4-8-4z" />
-                  <path d="M5 10v4c0 1.5 2.5 3 5 3s5-1.5 5-3v-4" />
+                  <path d="M10 2L2 7l8 5 8-5-8-5z" />
+                  <path d="M2 7v6c0 2 3 4 8 4s8-2 8-4V7" />
                 </svg>
               </div>
               <h3>For Colleges</h3>
               <p>
-                Bulk onboarding, placement tracking, and per-student PDF
-                interview reports.
+                Placement cohorts dashboard, bulk CSV onboarding, custom PDF
+                compliance exporter, and unified student SSO.
               </p>
             </div>
             <div className="bottom">
@@ -216,47 +171,9 @@ export default function AudienceSection() {
               <span className="tag">/COLLEGES</span>
             </div>
           </Link>
-
-          {/* College Groups */}
-          <Link className="card-l aud-card" href="/colleges">
-            <div className="top">
-              <div
-                className="icbox"
-                style={{
-                  width: 36,
-                  height: 36,
-                  border: "1px solid var(--border-l)",
-                  borderRadius: 8,
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "var(--l-1)",
-                }}
-              >
-                <svg className="icon" viewBox="0 0 20 20">
-                  <rect x="2" y="4" width="6" height="6" rx="1" />
-                  <rect x="12" y="4" width="6" height="6" rx="1" />
-                  <rect x="2" y="12" width="6" height="6" rx="1" />
-                  <rect x="12" y="12" width="6" height="6" rx="1" />
-                </svg>
-              </div>
-              <h3>For College Groups</h3>
-              <p>
-                Aggregated views, cross-college benchmarks, and group-wide
-                placement trends.
-              </p>
-            </div>
-            <div className="bottom">
-              <span className="learn">Learn more →</span>
-              <span className="tag">/GROUPS</span>
-            </div>
-          </Link>
         </div>
 
         {/* Audience Feature Showcase sub-carousel */}
-        <div className="rule-label" style={{ marginBottom: "24px" }}>
-          AUDIENCE FEATURE SHOWCASE
-        </div>
         <div style={{ background: "var(--surface-1)", border: "1px solid var(--border-d)", borderRadius: "14px", padding: "32px" }}>
           <Carousel autoPlay={true} showDots={true} showArrows={true} slidesToShow={1}>
             {showcaseSlides.map((slide, idx) => (

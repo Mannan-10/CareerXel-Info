@@ -290,67 +290,105 @@
 
 /* Feature Comparison Table */
 .comparison-sec {
-  margin-top: 96px;
+  margin-top: 80px;
   border-top: 1px solid var(--border-d);
-  padding-top: 64px;
+  padding-top: 56px;
 }
 .comparison-title {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 36px;
 }
 .comparison-title h3 {
-  font-size: clamp(28px, 4vw, 38px);
+  font-size: clamp(24px, 3.5vw, 34px);
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--d-1);
 }
+/* Wrapper provides scroll container with rounded border */
 .comp-table-wrap {
   width: 100%;
   overflow-x: auto;
   border: 1px solid var(--border-d);
-  border-radius: 12px;
+  border-radius: 14px;
   background: var(--surface-1);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  /* Thin scrollbar for usability */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-d) transparent;
 }
+.comp-table-wrap::-webkit-scrollbar { height: 5px; }
+.comp-table-wrap::-webkit-scrollbar-thumb { background: var(--border-d); border-radius: 99px; }
+/* Table itself */
 .comp-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: 13.5px;
   text-align: left;
-  min-width: 600px;
+  min-width: 580px;
 }
-.comp-table th, .comp-table td {
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--border-d);
+/* Header row */
+.comp-table thead tr {
+  background: var(--surface-2);
 }
 .comp-table th {
+  padding: 14px 20px;
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.12em;
+  font-size: 10px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--d-3);
-  background: var(--surface-2);
   font-weight: 500;
+  border-bottom: 2px solid var(--border-d);
+  background: var(--surface-2);
+}
+/* Highlight the "Pro/Enterprise/Elite" column header */
+.comp-table th:last-child {
+  color: var(--amber);
+  border-bottom-color: var(--amber);
+}
+/* Data cells */
+.comp-table td {
+  padding: 13px 20px;
+  border-bottom: 1px solid var(--border-d);
+  vertical-align: middle;
+  color: var(--d-2);
+  line-height: 1.45;
 }
 .comp-table td.feature-name {
   font-weight: 500;
   color: var(--d-1);
+  font-size: 13px;
 }
 .comp-table td.val-col {
   color: var(--d-2);
+  font-size: 13px;
 }
-.comp-table tr:hover td {
-  background: rgba(74, 139, 255, 0.03);
+/* Zebra-stripe */
+.comp-table tbody tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
+/* Highlight last column (Pro plan) */
+.comp-table tbody td:last-child {
+  background: rgba(74,139,255,0.04);
+}
+.comp-table tbody tr:hover td {
+  background: rgba(74,139,255,0.07);
 }
 .comp-table tr:last-child td {
   border-bottom: none;
 }
+/* Tick symbols */
 .tick-yes {
   color: var(--amber);
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 13px;
 }
 .tick-no {
   color: var(--d-3);
+  font-size: 15px;
+  opacity: 0.55;
 }
+
 
 /* ========================================
    RESPONSIVE AUDIENCE TABS STACKING

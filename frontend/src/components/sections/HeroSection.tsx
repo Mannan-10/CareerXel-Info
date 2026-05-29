@@ -6,21 +6,9 @@ export default function HeroSection() {
 {/* §00 Hero */}
 <section className="dark-mesh hero" data-screen-label="00 Hero">
   <div className="container">
-    <div className="sx-ribbon">
-      <span className="idx">
-        §00<span className="slash"> / </span>
-        <span className="name">OVERVIEW</span>
-      </span>
-      <span>CAREERXEL.COM · 2026</span>
-    </div>
-
     <div className="hero-grid">
       <div>
         <div className="serif-kicker">A career platform, reimagined.</div>
-
-        <div className="eyebrow" style={{ marginTop: 18 }}>
-          AI-NATIVE CAREER PLATFORM
-        </div>
 
         <h1 className="display mt-24" id="hero-heading">
           <span className="bone-grad">Hire smarter.</span>
@@ -234,7 +222,7 @@ export default function HeroSection() {
             className="mono"
             style={{ color: "var(--amber)", marginBottom: 4 }}
           >
-            ▢ ADVISOR
+            ADVISOR
           </div>
           <div
             style={{

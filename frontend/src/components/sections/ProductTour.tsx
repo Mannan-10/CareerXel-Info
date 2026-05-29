@@ -13,7 +13,7 @@ export default function ProductTour() {
       desc: "Create beautiful, standard-compliant resumes optimized for ATS screeners. Watch bullets and headline optimize in real time for different job criteria with a single toggle.",
       mockup: (
         <div style={{ display: "flex", flexDirection: "column", gap: "10px", width: "100%" }}>
-          <div className="mono" style={{ color: "var(--amber)", fontSize: "9px" }}>▢ RESUME OPTIMIZER · ACTIVE</div>
+          <div className="mono" style={{ color: "var(--amber)", fontSize: "9px" }}>RESUME OPTIMIZER · ACTIVE</div>
           <div style={{ height: "1px", background: "var(--border-d)", margin: "4px 0" }}></div>
           <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
             <div style={{ fontSize: "12px", color: "var(--d-1)", fontWeight: "500" }}>Priya Khurana</div>
@@ -35,7 +35,7 @@ export default function ProductTour() {
       desc: "Ditch keyword algorithms. Our matching engine evaluates your scorecard against verified technical rubrics. Instantly view role matching percentages mapped to your technical footprint.",
       mockup: (
         <div style={{ display: "flex", flexDirection: "column", gap: "10px", width: "100%" }}>
-          <div className="mono" style={{ color: "var(--amber)", fontSize: "9px" }}>▢ DISCOVERY MATRIX · 3 MATCHES</div>
+          <div className="mono" style={{ color: "var(--amber)", fontSize: "9px" }}>DISCOVERY MATRIX · 3 MATCHES</div>
           <div style={{ height: "1px", background: "var(--border-d)", margin: "4px 0" }}></div>
           <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
             <div style={{ display: "flex", justifyContent: "space-between", background: "var(--surface-3)", padding: "6px 10px", borderRadius: "6px" }}>
@@ -59,7 +59,7 @@ export default function ProductTour() {
       desc: "Practice under real assessment constraints. Fail technical mock interviews as many times as you need to build absolute muscle memory. AI scores communications and coding in real time.",
       mockup: (
         <div style={{ display: "flex", flexDirection: "column", gap: "10px", width: "100%" }}>
-          <div className="mono" style={{ color: "var(--amber)", fontSize: "9px" }}>▢ ASSESSMENT IN SESSION · REC ACTIVE</div>
+          <div className="mono" style={{ color: "var(--amber)", fontSize: "9px" }}>ASSESSMENT IN SESSION · REC ACTIVE</div>
           <div style={{ height: "1px", background: "var(--border-d)", margin: "4px 0" }}></div>
           <div style={{ background: "rgba(0,0,0,0.25)", border: "1px dashed var(--border-d)", padding: "10px", borderRadius: "6px", fontSize: "11px", color: "var(--d-2)", lineHeight: "1.45" }}>
             "Walk me through how you'd design a token-bucket rate limiter for a public API serving 10M requests..."
@@ -78,7 +78,7 @@ export default function ProductTour() {
       desc: "For employers: track and pipeline candidates from a single, beautiful command dashboard. Coordinate screening, AI scoring transcripts, slot calendars, and secure offers.",
       mockup: (
         <div style={{ display: "flex", flexDirection: "column", gap: "8px", width: "100%" }}>
-          <div className="mono" style={{ color: "var(--amber)", fontSize: "9px" }}>▢ PIPELINE COMMAND · SR FE</div>
+          <div className="mono" style={{ color: "var(--amber)", fontSize: "9px" }}>PIPELINE COMMAND · SR FE</div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px", height: "100%" }}>
             <div style={{ background: "var(--surface-3)", padding: "8px", borderRadius: "6px" }}>
               <div style={{ fontSize: "8px", color: "var(--d-3)" }}>SCREEN (2)</div>
@@ -100,7 +100,7 @@ export default function ProductTour() {
       desc: "For colleges: bulk onboard registers via CSV in seconds. Dispatch automated invites, track cohort placement LPA averages, and generate signed individual PDF scorecards on demand.",
       mockup: (
         <div style={{ display: "flex", flexDirection: "column", gap: "10px", width: "100%" }}>
-          <div className="mono" style={{ color: "var(--amber)", fontSize: "9px" }}>▢ PLACEMENT PORTAL · RIVERSIDE</div>
+          <div className="mono" style={{ color: "var(--amber)", fontSize: "9px" }}>PLACEMENT PORTAL · RIVERSIDE</div>
           <div style={{ height: "1px", background: "var(--border-d)", margin: "4px 0" }}></div>
           <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
             <div style={{ display: "flex", justifyContent: "space-between", fontSize: "11px", color: "var(--d-2)" }}>

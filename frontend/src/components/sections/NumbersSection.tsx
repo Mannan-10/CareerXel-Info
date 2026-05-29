@@ -71,33 +71,6 @@ export default function NumbersSection() {
   return (
     <section ref={sectionRef} className="dark-mesh section" data-screen-label="05 Numbers">
       <div className="container">
-        <div className="sx-ribbon" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <div>
-            <span className="idx">
-              §05<span className="slash"> / </span>
-              <span className="name">NUMBERS</span>
-            </span>
-            <span>UPDATED REALTIME</span>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-            <span 
-              style={{
-                width: "8px",
-                height: "8px",
-                borderRadius: "50%",
-                background: "var(--amber)",
-                boxShadow: "0 0 10px var(--amber)",
-                animation: "pulse 1.5s infinite"
-              }}
-            />
-            <span className="mono" style={{ fontSize: "10px", color: "var(--amber)", letterSpacing: "0.12em" }}>LIVE METRICS FEED</span>
-          </div>
-        </div>
-
-        <div className="eyebrow" style={{ marginBottom: 18 }}>
-          BY THE NUMBERS
-        </div>
-
         <h2 className="h-section" style={{ maxWidth: 760 }}>
           The platform, in numbers.
         </h2>

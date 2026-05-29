@@ -8,18 +8,6 @@ export default function ProductDepthSection() {
   data-screen-label="03 Product"
 >
   <div className="container">
-    <div className="sx-ribbon">
-      <span className="idx">
-        §03<span className="slash"> / </span>
-        <span className="name">PRODUCT</span>
-      </span>
-      <span>FROM FIRST CLICK TO FINAL HIRE</span>
-    </div>
-
-    <div className="eyebrow" style={{ marginBottom: 18 }}>
-      SEE IT IN MOTION
-    </div>
-
     <h2
       className="h-section"
       style={{ color: "var(--d-1)", maxWidth: 920 }}
@@ -47,9 +35,9 @@ export default function ProductDepthSection() {
       <div className="mockui">
         <div className="row">
           <div className="kpi">
-            <div className="lab">TIME-TO-HIRE</div>
-            <div className="val">14d</div>
-            <div className="delta">▼ 42%</div>
+            <div className="lab">SCREENED</div>
+            <div className="val">128</div>
+            <div className="delta">▲ THIS WEEK</div>
           </div>
           <div className="kpi">
             <div className="lab">QUALIFIED</div>
@@ -300,57 +288,13 @@ export default function ProductDepthSection() {
         </div>
         <h5>Numbers leadership reads.</h5>
         <p>
-          Hire velocity, source mix, time-to-hire, placement rates by
+          Hire velocity, source mix, conversion rates, placement rates by
           cohort.
         </p>
       </div>
     </div>
   </div>
 
-  {/* Floating fragment */}
-  <div
-    className="frag"
-    style={{
-      left: "4%",
-      bottom: "8%",
-      transform: "rotate(-3deg)",
-      maxWidth: 220,
-    }}
-  >
-    <div
-      className="mono"
-      style={{ color: "var(--d-3)", marginBottom: 4 }}
-    >
-      ▢ TIME-TO-HIRE
-    </div>
-    <div
-      style={{
-        display: "flex",
-        alignItems: "baseline",
-        gap: 8,
-      }}
-    >
-      <span
-        style={{
-          fontSize: 28,
-          fontWeight: 500,
-          letterSpacing: "-0.02em",
-        }}
-      >
-        14d
-      </span>
-      <span
-        style={{
-          fontFamily: "var(--font-mono)",
-          fontSize: 11,
-          color: "var(--amber)",
-          letterSpacing: "0.1em",
-        }}
-      >
-        ↓ 42%
-      </span>
-    </div>
-  </div>
 </section>
     </>
   );

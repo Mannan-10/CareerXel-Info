@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import SignalBar from "@/components/sections/SignalBar";
 import HeroSection from "@/components/sections/HeroSection";
 import LogoStrip from "@/components/sections/LogoStrip";
 import AudienceSection from "@/components/sections/AudienceSection";
@@ -12,13 +11,13 @@ import CTASection from "@/components/sections/CTASection";
 
 export const metadata: Metadata = {
   title: "CareerXel | AI-Powered Career & Recruitment Platform",
-  description: "CareerXel is a premium AI-native career and recruitment platform. We scale resume building, smart matching, and verified proctored interviews for candidates, employers, and colleges.",
+  description: "CareerXel is a premium career and recruitment platform. We scale resume building, smart matching, and verified proctored interviews for candidates, employers, and colleges.",
   alternates: {
     canonical: "https://careerxel.com/",
   },
   openGraph: {
     title: "CareerXel | AI-Powered Career & Recruitment Platform",
-    description: "CareerXel is a premium AI-native career and recruitment platform. We scale resume building, smart matching, and verified proctored interviews for candidates, employers, and colleges.",
+    description: "CareerXel is a premium career and recruitment platform. We scale resume building, smart matching, and verified proctored interviews for candidates, employers, and colleges.",
     type: "website",
   },
 };
@@ -26,7 +25,6 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <main>
-      <SignalBar />
       <HeroSection />
       <LogoStrip />
       <AudienceSection />

@@ -1,19 +1,10 @@
-# CareerXel Homepage Sections
+# CareerXel Frontend
 
-These components were split from your uploaded HomePage without redesigning the UI.
+Next.js frontend for the CareerXel marketing and product pages.
 
-Copy files from:
-- `src/components/sections/` to your frontend `src/components/sections/`
-- `src/app/page.tsx` to your frontend `src/app/page.tsx`
+Current app routes live in `src/app`, shared layout pieces live in
+`src/components/layout`, and reusable page sections live in
+`src/components/sections`.
 
-Components included:
-- SignalBar
-- HeroSection
-- LogoStrip
-- AudienceSection
-- FeatureGrid
-- ProductDepthSection
-- WorkflowSection
-- NumbersSection
-- TestimonialSection
-- CTASection
+The old `legacy-html` static page snapshots were removed after the pages were
+ported into React routes.

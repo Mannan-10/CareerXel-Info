@@ -1,6 +1,5 @@
 import React from "react";
 import { Metadata } from "next";
-import SignalBar from "@/components/sections/SignalBar";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import "./ai.css";
 
@@ -20,37 +19,21 @@ export const metadata: Metadata = {
 export default function AIPage() {
   return (
     <main>
-
-      <SignalBar />
-
       {/* §00 HERO */}
       <section className="dark-mesh p-hero" data-screen-label="00 Hero">
         <div className="container">
-          <Breadcrumbs />
-          <div className="sx-ribbon">
-            <span className="idx">§00<span className="slash"> / </span><span className="name">AI &amp; INTELLIGENCE</span></span>
-            <span>EXPLAINABLE · CALIBRATED · YOURS</span>
-          </div>
-          <div className="p-hero-grid">
+          <Breadcrumbs />          <div className="p-hero-grid">
             <div>
-              <div className="serif-kicker">No black boxes.</div>
-              <div className="eyebrow" style={{ marginTop: "18px" }}>AI &amp; INTELLIGENCE</div>
-              <h1 className="display mt-24">
+              <div className="serif-kicker">No black boxes.</div>              <h1 className="display mt-24">
                 <span className="bone-grad">Explainable AI</span><br />
                 <span className="muted-weight">across the whole journey.</span>
               </h1>
               <p className="subhead">From resume parse to hire recommendation, every model output is traceable, auditable, and tuned to real outcomes — not vibes.</p>
-              <div className="flex gap-12 mt-32">
-                <a className="btn btn-primary" href="#">Read the model card
-                  <svg className="icon" viewBox="0 0 20 20"><path d="M5 10h10M11 6l4 4-4 4" /></svg>
-                </a>
-                <a className="btn btn-ghost" href="#">See methodology</a>
-              </div>
             </div>
             <div className="p-hero-mock">
               <div className="ai-diagram">
                 <div className="head">
-                  <span className="lt">▢ MODEL · CXL-V4</span>
+                  <span className="lt">MODEL · CXL-V4</span>
                   <span>EXPLAINABLE · CALIBRATED</span>
                 </div>
                 <svg className="flow" viewBox="0 0 400 400">
@@ -113,11 +96,11 @@ export default function AIPage() {
                 </svg>
               </div>
               <div className="frag" style={{ top: "4%", left: "-16%", transform: "rotate(-5deg)", maxWidth: "200px" }}>
-                <div className="mono" style={{ color: "var(--amber)", marginBottom: "4px" }}>▢ TRACE</div>
+                <div className="mono" style={{ color: "var(--amber)", marginBottom: "4px" }}>TRACE</div>
                 <div style={{ fontSize: "13px", fontWeight: 500 }}>Every score is auditable.</div>
               </div>
               <div className="frag" style={{ bottom: "8%", right: "-12%", transform: "rotate(5deg)", maxWidth: "200px" }}>
-                <div className="mono" style={{ color: "var(--d-3)", marginBottom: "4px" }}>▢ MODEL CARD</div>
+                <div className="mono" style={{ color: "var(--d-3)", marginBottom: "4px" }}>MODEL CARD</div>
                 <div style={{ fontSize: "13px", fontWeight: 500 }}>Public. Versioned. Signed.</div>
               </div>
             </div>
@@ -127,14 +110,7 @@ export default function AIPage() {
 
       {/* §01 THREE PILLARS LIGHT */}
       <section className="light section">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx" style={{ color: "var(--l-2)" }}>§01<span className="slash"> / </span><span className="name">THREE PILLARS</span></span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--l-2)" }}>EXPLAIN · CALIBRATE · TRUST</span>
-          </div>
-          <div className="section-header">
-            <div className="eyebrow">PRINCIPLES</div>
-            <h2 className="h-section" style={{ marginTop: "18px" }}>
+        <div className="container">          <div className="section-header">            <h2 className="h-section" style={{ marginTop: "18px" }}>
               Three things we won't compromise on.
             </h2>
           </div>
@@ -178,14 +154,7 @@ export default function AIPage() {
 
       {/* §02 SCORING DIMENSIONS DARK */}
       <section className="dark-mesh section">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx">§02<span className="slash"> / </span><span className="name">SCORING DIMENSIONS</span></span>
-            <span>12 SIGNALS · ONE VERDICT</span>
-          </div>
-          <div className="section-header">
-            <div className="eyebrow">12 DIMENSIONS</div>
-            <h2 className="h-section" style={{ marginTop: "18px" }}>
+        <div className="container">          <div className="section-header">            <h2 className="h-section" style={{ marginTop: "18px" }}>
               What we score.<br /><span className="muted-weight">All of it. Out in the open.</span>
             </h2>
             <p className="subhead">Sample session · Senior Frontend Engineer track</p>
@@ -269,15 +238,8 @@ export default function AIPage() {
 
       {/* §03 EXPLAINABILITY MOCK LIGHT */}
       <section className="light section">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx" style={{ color: "var(--l-2)" }}>§03<span className="slash"> / </span><span className="name">EXPLAINABILITY</span></span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--l-2)" }}>EVERY DECISION · TRACED</span>
-          </div>
-          <div className="two-asym">
-            <div>
-              <div className="eyebrow" style={{ marginBottom: "18px" }}>EXPLAINABILITY</div>
-              <h2 className="h-section">
+        <div className="container">          <div className="two-asym">
+            <div>              <h2 className="h-section">
                 Click any score.<br />
                 <span className="muted-weight">See the receipts.</span>
               </h2>
@@ -296,14 +258,14 @@ export default function AIPage() {
               </div>
               <div className="body">
                 <div className="col">
-                  <h6>▢ TOP POSITIVE FACTORS</h6>
+                  <h6>TOP POSITIVE FACTORS</h6>
                   <div className="factor"><span className="nm">React internals · 4 specific examples</span><span className="impact"><span className="pos">+12.4</span></span></div>
                   <div className="factor"><span className="nm">Perf debugging story · Quanta</span><span className="impact"><span className="pos">+8.7</span></span></div>
                   <div className="factor"><span className="nm">System design · cache invalidation</span><span className="impact"><span className="pos">+7.2</span></span></div>
                   <div className="factor"><span className="nm">STAR · ownership of design tokens</span><span className="impact"><span className="pos">+5.1</span></span></div>
                 </div>
                 <div className="col">
-                  <h6>▢ NEGATIVE FACTORS</h6>
+                  <h6>NEGATIVE FACTORS</h6>
                   <div className="factor"><span className="nm">DS · binary tree confusion</span><span className="impact"><span className="neg">−4.2</span></span></div>
                   <div className="factor"><span className="nm">Spoke over interviewer · 3 instances</span><span className="impact"><span className="neg">−2.1</span></span></div>
                   <div className="verdict">
@@ -319,10 +281,8 @@ export default function AIPage() {
       </section>
 
       {/* §04 TRUST LIGHT (extends §03 light) */}
-      <section className="light" style={{ paddingBottom: "120px" }}>
-        <div className="container">
-          <div className="rule-label" style={{ color: "var(--l-2)" }}>TRUST · GOVERNANCE</div>
-          <div className="trust-grid">
+      <section className="light" style={{ paddingBottom: "64px" }}>
+        <div className="container">          <div className="trust-grid">
             <div className="trust-card">
               <div className="ic">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M10 2L3 5v5c0 4 3 7 7 8 4-1 7-4 7-8V5l-7-3z" /></svg>
@@ -357,18 +317,8 @@ export default function AIPage() {
 
       {/* §05 CTA */}
       <section className="cta-mesh page-cta" style={{ position: "relative", overflow: "hidden" }}>
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx">§05<span className="slash"> / </span><span className="name">READ MORE</span></span>
-            <span>OPEN MODEL CARD</span>
-          </div>
-          <div className="eyebrow" style={{ justifyContent: "center", margin: "0 auto 18px" }}>DEEPER DIVE</div>
-          <h2 className="display"><span className="bone-grad">Read the full model card.</span></h2>
+        <div className="container">          <h2 className="display"><span className="bone-grad">Read the full model card.</span></h2>
           <p style={{ fontSize: "19px", color: "var(--d-2)", maxWidth: "600px", margin: "24px auto 0" }}>Versioned, signed, and updated every release. Methodology, datasets, fairness audits — all public.</p>
-          <div className="flex gap-12 mt-32" style={{ justifyContent: "center" }}>
-            <a className="btn btn-primary" href="#">Read the model card</a>
-            <a className="btn btn-ghost" href="#">Talk to security</a>
-          </div>
         </div>
       </section>
     </main>

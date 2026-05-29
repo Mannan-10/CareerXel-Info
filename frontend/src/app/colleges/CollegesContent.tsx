@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from "react";
-import SignalBar from "@/components/sections/SignalBar";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import "./colleges.css";
 
@@ -104,30 +103,21 @@ export default function CollegesContent() {
 
   return (
     <main>
-      <SignalBar />
-
       {/* §00 HERO */}
       <section className="dark-mesh p-hero" data-screen-label="00 Hero">
         <div className="container">
-          <Breadcrumbs />
-          <div className="sx-ribbon">
-            <span className="idx">§00<span className="slash"> / </span><span className="name">FOR COLLEGES</span></span>
-            <span>PLACEMENTS · MEASURED</span>
-          </div>
-          <div className="p-hero-grid">
+          <Breadcrumbs />          <div className="p-hero-grid">
             <div>
-              <div className="serif-kicker">For the placement office.</div>
-              <div className="eyebrow" style={{ marginTop: "18px" }}>FOR COLLEGES &amp; GROUPS</div>
-              <h1 className="display mt-24">
+              <div className="serif-kicker">For the placement office.</div>              <h1 className="display mt-24">
                 <span className="bone-grad">The placement office,</span><br />
                 <span className="muted-weight">brought into focus.</span>
               </h1>
               <p className="subhead">Onboard cohorts in bulk. Track every interview. Show real numbers. Per-student PDF reports your faculty can sign off on.</p>
               <div className="flex gap-12 mt-32">
-                <a className="btn btn-primary" href="#">Talk to placements
+                <a className="btn btn-primary" href="/contact">Talk to placements
                   <svg className="icon" viewBox="0 0 20 20"><path d="M5 10h10M11 6l4 4-4 4" /></svg>
                 </a>
-                <a className="btn btn-ghost" href="#">Download case study</a>
+                <a className="btn btn-ghost" href="/features">Explore Features</a>
               </div>
             </div>
             <div className="p-hero-mock">
@@ -171,20 +161,20 @@ export default function CollegesContent() {
                   <div className="panel" style={{ flex: "0 0 auto" }}>
                     <h6>TOP RECRUITERS</h6>
                     <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
-                      <span className="m-pill">▢ HELIX</span>
-                      <span className="m-pill">▢ QUANTA</span>
-                      <span className="m-pill amber">▢ AXIOM</span>
+                      <span className="m-pill">HELIX</span>
+                      <span className="m-pill">QUANTA</span>
+                      <span className="m-pill amber">AXIOM</span>
                       <span className="m-pill">+ 47</span>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="frag" style={{ top: "10%", left: "-20%", transform: "rotate(-5deg)", maxWidth: "220px" }}>
-                <div className="mono" style={{ color: "var(--amber)", marginBottom: "4px" }}>▢ COHORT</div>
+                <div className="mono" style={{ color: "var(--amber)", marginBottom: "4px" }}>COHORT</div>
                 <div style={{ fontSize: "13px", fontWeight: 500 }}>412 students · 72% placed</div>
               </div>
               <div className="frag" style={{ bottom: "10%", right: "-16%", transform: "rotate(5deg)", maxWidth: "220px" }}>
-                <div className="mono" style={{ color: "var(--d-3)", marginBottom: "4px" }}>▢ AVG PACKAGE</div>
+                <div className="mono" style={{ color: "var(--d-3)", marginBottom: "4px" }}>AVG PACKAGE</div>
                 <div style={{ fontSize: "18px", fontWeight: 500, letterSpacing: "-0.02em" }}>₹14.8 LPA</div>
               </div>
             </div>
@@ -194,14 +184,7 @@ export default function CollegesContent() {
 
       {/* §01 BULK ONBOARDING */}
       <section className="light section">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx" style={{ color: "var(--l-2)" }}>§01<span className="slash"> / </span><span className="name">ONBOARDING</span></span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--l-2)" }}>CSV → PROFILES IN MINUTES</span>
-          </div>
-          <div className="section-header">
-            <div className="eyebrow">BULK ONBOARDING</div>
-            <h2 className="h-section" style={{ marginTop: "18px" }}>
+        <div className="container">          <div className="section-header">            <h2 className="h-section" style={{ marginTop: "18px" }}>
               Onboard a cohort<br /><span className="muted-weight">in the time it takes for coffee.</span>
             </h2>
           </div>
@@ -226,7 +209,7 @@ export default function CollegesContent() {
               </div>
               <div className="progress">
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "4px" }}>
-                  <h6 style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--l-2)", margin: 0 }}>▢ IMPORT QUEUE</h6>
+                  <h6 style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--l-2)", margin: 0 }}>IMPORT QUEUE</h6>
                   <span className="chip" style={{ fontSize: "10px", padding: "2px 8px" }}>{uploadQueue.length + 408} STUDENTS · {Math.ceil(uploadQueue.length / 2) + 6} BATCHES</span>
                 </div>
                 
@@ -246,7 +229,7 @@ export default function CollegesContent() {
 
                 <div style={{ display: "flex", gap: "8px", marginTop: "6px" }}>
                   <button className="chip amber" style={{ cursor: "pointer", border: "none" }} onClick={() => setInvitesSent(true)}>
-                    {invitesSent ? "▢ INVITES SENT!" : "▢ SEND INVITES (412)"}
+                    {invitesSent ? "INVITES SENT!" : "SEND INVITES (412)"}
                   </button>
                   <span className="chip">DOWNLOAD ERRORS · 3</span>
                 </div>
@@ -258,14 +241,7 @@ export default function CollegesContent() {
 
       {/* §02 ROSTER */}
       <section className="dark-mesh section">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx">§02<span className="slash"> / </span><span className="name">ROSTER</span></span>
-            <span>EVERY STUDENT · EVERY STATUS</span>
-          </div>
-          <div className="section-header">
-            <div className="eyebrow">ROSTER</div>
-            <h2 className="h-section" style={{ marginTop: "18px" }}>
+        <div className="container">          <div className="section-header">            <h2 className="h-section" style={{ marginTop: "18px" }}>
               Every student.<br /><span className="muted-weight">Every interview. Every status.</span>
             </h2>
           </div>
@@ -276,7 +252,7 @@ export default function CollegesContent() {
             </div>
             <div className="filters">
               <span className={`f ${activeFilter === "ALL" ? "on" : ""}`} onClick={() => setActiveFilter("ALL")}>
-                ▢ CSE 2026 · {students.length}
+                CSE 2026 · {students.length}
               </span>
               <span className={`f ${activeFilter === "SEC_A" ? "on" : ""}`} onClick={() => setActiveFilter("SEC_A")}>
                 SECTION A
@@ -290,7 +266,7 @@ export default function CollegesContent() {
               <input 
                 type="text" 
                 className="search" 
-                placeholder="▢ SEARCH STUDENTS..." 
+                placeholder="SEARCH STUDENTS..." 
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -337,14 +313,7 @@ export default function CollegesContent() {
 
       {/* §03 PLACEMENT ANALYTICS */}
       <section className="light section">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx" style={{ color: "var(--l-2)" }}>§03<span className="slash"> / </span><span className="name">PLACEMENT ANALYTICS</span></span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--l-2)" }}>RATES · PACKAGES · TRENDS</span>
-          </div>
-          <div className="section-header">
-            <div className="eyebrow">ANALYTICS</div>
-            <h2 className="h-section" style={{ marginTop: "18px" }}>
+        <div className="container">          <div className="section-header">            <h2 className="h-section" style={{ marginTop: "18px" }}>
               Numbers your placement office<br /><span className="muted-weight">can put in the report.</span>
             </h2>
           </div>
@@ -439,12 +408,7 @@ export default function CollegesContent() {
 
       {/* §04 PER-STUDENT REPORT */}
       <section className="dark-mesh section">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx">§04<span className="slash"> / </span><span className="name">REPORTS</span></span>
-            <span>PER STUDENT · ON DEMAND</span>
-          </div>
-          <div className="two-asym-rev">
+        <div className="container">          <div className="two-asym-rev">
             <div className="mock pdf-mock" style={{ position: "relative" }}>
               <div className="mock-bar">
                 <span className="dot"></span><span className="dot"></span><span className="dot"></span>
@@ -456,7 +420,7 @@ export default function CollegesContent() {
                     <h6 style={{ color: "var(--l-1)" }}>P. KHURANA · INTERVIEW REPORT</h6>
                     <div className="meta">PK220314 · CSE · RIVERBEND U · 2026</div>
                   </div>
-                  <div className="r">▢ CAREERXEL<br />2026.05.15</div>
+                  <div className="r">CAREERXEL<br />2026.05.15</div>
                 </div>
                 <div className="sec">
                   <div className="t">SUMMARY</div>
@@ -489,9 +453,7 @@ export default function CollegesContent() {
                 </div>
               </div>
             </div>
-            <div>
-              <div className="eyebrow" style={{ marginBottom: "18px" }}>REPORTS</div>
-              <h2 className="h-section">
+            <div>              <h2 className="h-section">
                 Per-student PDF reports.<br />
                 <span className="muted-weight">On demand. Always current.</span>
               </h2>
@@ -509,14 +471,7 @@ export default function CollegesContent() {
 
       {/* §05 GROUP-WIDE */}
       <section className="light section">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx" style={{ color: "var(--l-2)" }}>§05<span className="slash"> / </span><span className="name">COLLEGE GROUPS</span></span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--l-2)" }}>CROSS-COLLEGE BENCHMARKS</span>
-          </div>
-          <div className="section-header">
-            <div className="eyebrow">FOR COLLEGE GROUPS</div>
-            <h2 className="h-section" style={{ marginTop: "18px" }}>
+        <div className="container">          <div className="section-header">            <h2 className="h-section" style={{ marginTop: "18px" }}>
               Multiple campuses.<br /><span className="muted-weight">One source of truth.</span>
             </h2>
           </div>
@@ -530,7 +485,7 @@ export default function CollegesContent() {
                 <p style={{ maxWidth: "360px", color: "var(--l-2)" }}>Aggregate every college, every campus, every program — in one hierarchy you can drill into.</p>
               </div>
               <div style={{ background: "var(--paper)", border: "1px solid var(--border-l)", borderRadius: "10px", padding: "14px", display: "flex", flexDirection: "column", gap: "8px" }}>
-                <div className="mono" style={{ fontSize: "10px", letterSpacing: "0.12em", color: "var(--l-2)" }}>▢ TOP COLLEGES BY PLACEMENT</div>
+                <div className="mono" style={{ fontSize: "10px", letterSpacing: "0.12em", color: "var(--l-2)" }}>TOP COLLEGES BY PLACEMENT</div>
                 <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}><span style={{ fontSize: "12px" }}>Riverbend U</span><span style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "var(--burnt)" }}>72%</span></div>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}><span style={{ fontSize: "12px" }}>Mercer Tech</span><span style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "var(--burnt)" }}>68%</span></div>
@@ -566,17 +521,11 @@ export default function CollegesContent() {
 
       {/* §06 CTA */}
       <section className="cta-mesh page-cta" style={{ position: "relative", overflow: "hidden" }}>
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx">§06<span className="slash"> / </span><span className="name">PARTNER</span></span>
-            <span>CUSTOM ONBOARDING</span>
-          </div>
-          <div className="eyebrow" style={{ justifyContent: "center", margin: "0 auto 18px" }}>PARTNER WITH US</div>
-          <h2 className="display"><span className="bone-grad">Bring your campus on board.</span></h2>
+        <div className="container">          <h2 className="display"><span className="bone-grad">Bring your campus on board.</span></h2>
           <p style={{ fontSize: "19px", color: "var(--d-2)", maxWidth: "600px", margin: "24px auto 0" }}>Custom onboarding for institutions and college groups. Free pilot for the first cohort.</p>
           <div className="flex gap-12 mt-32" style={{ justifyContent: "center" }}>
-            <a className="btn btn-primary" href="#">Talk to placements</a>
-            <a className="btn btn-ghost" href="#">Download case study</a>
+            <a className="btn btn-primary" href="/contact">Talk to placements</a>
+            <a className="btn btn-ghost" href="/features">Explore Features</a>
           </div>
         </div>
       </section>

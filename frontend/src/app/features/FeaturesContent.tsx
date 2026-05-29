@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from "react";
-import SignalBar from "@/components/sections/SignalBar";
 import ProductTour from "@/components/sections/ProductTour";
 import CompetitorComparison from "@/components/sections/CompetitorComparison";
 
@@ -238,52 +237,35 @@ export default function FeaturesContent() {
         ))}
       </div>
 
-      <SignalBar />
-
       {/* §00 HERO */}
-      <section className="dark-mesh section-edge" style={{ padding: "96px 0 80px" }}>
+      <section className="dark-mesh section-edge" style={{ padding: "64px 0 48px" }}>
         <div className="container">
-          <Breadcrumbs />
-          <div className="sx-ribbon">
-            <span className="idx">§00<span className="slash"> / </span><span className="name">FEATURES</span></span>
-            <span>EVERY MODULE · IN ONE PLACE</span>
-          </div>
-          <div className="serif-kicker">An honest tour of the platform.</div>
-          <div className="eyebrow" style={{ marginTop: "18px" }}>FEATURES INDEX</div>
-          <h1 className="display mt-24" style={{ maxWidth: "1100px" }}>
+          <Breadcrumbs />          <div className="serif-kicker">An honest tour of the platform.</div>          <h1 className="display mt-24" style={{ maxWidth: "1100px" }}>
             <span className="bone-grad">Everything we've built,</span><br />
             <span className="muted-weight">on one page.</span>
           </h1>
           <p className="subhead">Twelve modules. One platform. No hidden upsells, no asterisks. Click any item to jump straight to it.</p>
 
-          {/* Index TOC */}
-          <div className="rule-label" style={{ marginTop: "56px" }}>CONTENTS · 12 MODULES</div>
-          <div className="toc-grid">
-            <div onClick={() => smoothScroll("f01")} className="toc-item"><span className="num">§01</span><span className="lab">Resume Builder</span></div>
-            <div onClick={() => smoothScroll("f02")} className="toc-item"><span className="num">§02</span><span className="lab">Smart Matching</span></div>
-            <div onClick={() => smoothScroll("f03")} className="toc-item"><span className="num">§03</span><span className="lab">AI Mock Interviews</span></div>
-            <div onClick={() => smoothScroll("f04")} className="toc-item"><span className="num">§04</span><span className="lab">Career Roadmaps</span></div>
-            <div onClick={() => smoothScroll("f05")} className="toc-item"><span className="num">§05</span><span className="lab">Recruiter ATS</span></div>
-            <div onClick={() => smoothScroll("f06")} className="toc-item"><span className="num">§06</span><span className="lab">Job Postings</span></div>
-            <div onClick={() => smoothScroll("f07")} className="toc-item"><span className="num">§07</span><span className="lab">Proctoring</span></div>
-            <div onClick={() => smoothScroll("f08")} className="toc-item"><span className="num">§08</span><span className="lab">Scoring Engine</span></div>
-            <div onClick={() => smoothScroll("f09")} className="toc-item"><span className="num">§09</span><span className="lab">Bulk Onboarding</span></div>
-            <div onClick={() => smoothScroll("f10")} className="toc-item"><span className="num">§10</span><span className="lab">Placement Analytics</span></div>
-            <div onClick={() => smoothScroll("f11")} className="toc-item"><span className="num">§11</span><span className="lab">PDF Reports</span></div>
-            <div onClick={() => smoothScroll("f12")} className="toc-item"><span className="num">§12</span><span className="lab">Auth &amp; Security</span></div>
+          {/* Index TOC */}          <div className="toc-grid">
+            <div onClick={() => smoothScroll("f01")} className="toc-item"><span className="lab">Resume Builder</span></div>
+            <div onClick={() => smoothScroll("f02")} className="toc-item"><span className="lab">Smart Matching</span></div>
+            <div onClick={() => smoothScroll("f03")} className="toc-item"><span className="lab">AI Mock Interviews</span></div>
+            <div onClick={() => smoothScroll("f04")} className="toc-item"><span className="lab">Career Roadmaps</span></div>
+            <div onClick={() => smoothScroll("f05")} className="toc-item"><span className="lab">Recruiter ATS</span></div>
+            <div onClick={() => smoothScroll("f06")} className="toc-item"><span className="lab">Job Postings</span></div>
+            <div onClick={() => smoothScroll("f07")} className="toc-item"><span className="lab">Proctoring</span></div>
+            <div onClick={() => smoothScroll("f08")} className="toc-item"><span className="lab">Scoring Engine</span></div>
+            <div onClick={() => smoothScroll("f09")} className="toc-item"><span className="lab">Bulk Onboarding</span></div>
+            <div onClick={() => smoothScroll("f10")} className="toc-item"><span className="lab">Placement Analytics</span></div>
+            <div onClick={() => smoothScroll("f11")} className="toc-item"><span className="lab">PDF Reports</span></div>
+            <div onClick={() => smoothScroll("f12")} className="toc-item"><span className="lab">Auth &amp; Security</span></div>
           </div>
         </div>
       </section>
 
       {/* §00.5 PRODUCT TOUR */}
-      <section className="dark-mesh section" id="f00.5" style={{ borderTop: "1px solid var(--border-d)", borderBottom: "1px solid var(--border-d)", padding: "80px 0" }}>
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx">§00.5<span className="slash"> / </span><span className="name">PRODUCT TOUR</span></span>
-            <span>CLICK-THROUGH WALKTHROUGH</span>
-          </div>
-          <div className="eyebrow" style={{ marginBottom: "16px" }}>PRODUCT TOUR</div>
-          <h2 className="h-section" style={{ marginBottom: "40px" }}>
+      <section className="dark-mesh section" id="f00.5" style={{ borderTop: "1px solid var(--border-d)", borderBottom: "1px solid var(--border-d)", padding: "48px 0" }}>
+        <div className="container">          <h2 className="h-section" style={{ marginBottom: "40px" }}>
             Take an interactive<br /><span className="muted-weight">product walkthrough.</span>
           </h2>
           <ProductTour />
@@ -292,12 +274,7 @@ export default function FeaturesContent() {
 
       {/* §01 Resume Builder */}
       <section className="light section" id="f01">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx" style={{ color: "var(--l-2)" }}>§01<span className="slash"> / </span><span className="name">RESUME BUILDER</span></span>
-            <span style={{ color: "var(--l-2)", fontFamily: "var(--font-mono)", fontSize: "11px" }}>CANDIDATES</span>
-          </div>
-          <div className="feat-row">
+        <div className="container">          <div className="feat-row">
             <div className="num">01</div>
             <div className="info">
               <h3>Resume Builder</h3>
@@ -329,12 +306,7 @@ export default function FeaturesContent() {
 
       {/* §02 Smart Matching */}
       <section className="dark-mesh section" id="f02">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx">§02<span className="slash"> / </span><span className="name">SMART MATCHING</span></span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px" }}>CANDIDATES</span>
-          </div>
-          <div className="feat-row">
+        <div className="container">          <div className="feat-row">
             <div className="num">02</div>
             <div className="info">
               <h3>Smart Matching</h3>
@@ -366,12 +338,7 @@ export default function FeaturesContent() {
 
       {/* §03 AI Mock Interviews */}
       <section className="light section" id="f03">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx" style={{ color: "var(--l-2)" }}>§03<span className="slash"> / </span><span className="name">AI INTERVIEWS</span></span>
-            <span style={{ color: "var(--l-2)", fontFamily: "var(--font-mono)", fontSize: "11px" }}>CANDIDATES</span>
-          </div>
-          <div className="feat-row">
+        <div className="container">          <div className="feat-row">
             <div className="num">03</div>
             <div className="info">
               <h3>AI Mock Interviews</h3>
@@ -384,12 +351,12 @@ export default function FeaturesContent() {
             </div>
             <div className="visual">
               <div className="v-row">
-                <span className="v-pill amber" style={{ pointerEvents: "none" }}>▢ LIVE TRANSCRIPT</span>
+                <span className="v-pill amber" style={{ pointerEvents: "none" }}>LIVE TRANSCRIPT</span>
                 <span className="v-pill active">Q {activeQuestionIdx + 1}/{questions.length}</span>
               </div>
               <div className="v-list" style={{ marginTop: "12px", gap: "10px" }}>
                 <div className="v-li" style={{ flexDirection: "column", alignItems: "flex-start", gap: "8px" }}>
-                  <div className="mono" style={{ color: "var(--amber)", fontSize: "9px", letterSpacing: "0.12em" }}>▢ AI INTERVIEWER</div>
+                  <div className="mono" style={{ color: "var(--amber)", fontSize: "9px", letterSpacing: "0.12em" }}>AI INTERVIEWER</div>
                   <div style={{ fontSize: "11px", lineHeight: "1.55", color: "var(--d-1)" }}>{questions[activeQuestionIdx].q}</div>
                 </div>
                 <div className="v-li">
@@ -406,7 +373,7 @@ export default function FeaturesContent() {
                 className="v-pill active"
                 style={{ marginTop: "8px", cursor: "pointer", border: "none", width: "100%" }}
               >
-                ▢ NEXT QUESTION →
+                NEXT QUESTION →
               </button>
             </div>
           </div>
@@ -415,12 +382,7 @@ export default function FeaturesContent() {
 
       {/* §04 Career Roadmaps */}
       <section className="dark-mesh section" id="f04">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx">§04<span className="slash"> / </span><span className="name">ROADMAPS</span></span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px" }}>CANDIDATES</span>
-          </div>
-          <div className="feat-row">
+        <div className="container">          <div className="feat-row">
             <div className="num">04</div>
             <div className="info">
               <h3>Career Roadmaps</h3>
@@ -445,7 +407,7 @@ export default function FeaturesContent() {
               </div>
               <div className="v-list" style={{ marginTop: "12px" }}>
                 <div className="v-li" style={{ minHeight: "48px", display: "block" }}>
-                  <div className="mono" style={{ color: "var(--amber)", fontSize: "9px", marginBottom: "4px" }}>▢ TARGET METRIC</div>
+                  <div className="mono" style={{ color: "var(--amber)", fontSize: "9px", marginBottom: "4px" }}>TARGET METRIC</div>
                   <div style={{ fontSize: "11px", lineHeight: "1.4" }}>{skillDescriptions[hoveredSkill]}</div>
                 </div>
               </div>
@@ -456,12 +418,7 @@ export default function FeaturesContent() {
 
       {/* §05 Recruiter ATS */}
       <section className="light section" id="f05">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx" style={{ color: "var(--l-2)" }}>§05<span className="slash"> / </span><span className="name">RECRUITER ATS</span></span>
-            <span style={{ color: "var(--l-2)", fontFamily: "var(--font-mono)", fontSize: "11px" }}>EMPLOYERS</span>
-          </div>
-          <div className="feat-row">
+        <div className="container">          <div className="feat-row">
             <div className="num">05</div>
             <div className="info">
               <h3>Recruiter ATS</h3>
@@ -499,12 +456,7 @@ export default function FeaturesContent() {
 
       {/* §06 Job Postings */}
       <section className="dark-mesh section" id="f06">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx">§06<span className="slash"> / </span><span className="name">JOB POSTINGS</span></span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px" }}>EMPLOYERS</span>
-          </div>
-          <div className="feat-row">
+        <div className="container">          <div className="feat-row">
             <div className="num">06</div>
             <div className="info">
               <h3>Job Postings</h3>
@@ -539,12 +491,7 @@ export default function FeaturesContent() {
 
       {/* §07 Proctoring */}
       <section className="light section" id="f07">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx" style={{ color: "var(--l-2)" }}>§07<span className="slash"> / </span><span className="name">PROCTORING</span></span>
-            <span style={{ color: "var(--l-2)", fontFamily: "var(--font-mono)", fontSize: "11px" }}>EMPLOYERS</span>
-          </div>
-          <div className="feat-row">
+        <div className="container">          <div className="feat-row">
             <div className="num">07</div>
             <div className="info">
               <h3>Proctoring</h3>
@@ -557,7 +504,7 @@ export default function FeaturesContent() {
             </div>
             <div className="visual">
               <div className="v-row">
-                <span className="v-pill amber" style={{ pointerEvents: "none" }}>▢ PROCTOR LIVE LOG</span>
+                <span className="v-pill amber" style={{ pointerEvents: "none" }}>PROCTOR LIVE LOG</span>
                 <span className="v-pill" style={{ color: isTabSwitched ? "var(--amber)" : undefined }}>
                   {isTabSwitched ? "⚠ TAB SWITCH DETECTED" : "SESSION ACTIVE"}
                 </span>
@@ -582,7 +529,7 @@ export default function FeaturesContent() {
                 style={{ marginTop: "8px", cursor: simulateActive ? "not-allowed" : "pointer", border: "none", width: "100%" }}
                 disabled={simulateActive}
               >
-                {simulateActive ? "⚠ SIMULATING TAB SWITCH..." : "▢ SIMULATE VIOLATION"}
+                {simulateActive ? "⚠ SIMULATING TAB SWITCH..." : "SIMULATE VIOLATION"}
               </button>
             </div>
           </div>
@@ -591,12 +538,7 @@ export default function FeaturesContent() {
 
       {/* §08 Scoring Engine */}
       <section className="dark-mesh section" id="f08">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx">§08<span className="slash"> / </span><span className="name">SCORING ENGINE</span></span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px" }}>EMPLOYERS</span>
-          </div>
-          <div className="feat-row">
+        <div className="container">          <div className="feat-row">
             <div className="num">08</div>
             <div className="info">
               <h3>Scoring Engine</h3>
@@ -643,12 +585,7 @@ export default function FeaturesContent() {
 
       {/* §09 Bulk Onboarding */}
       <section className="light section" id="f09">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx" style={{ color: "var(--l-2)" }}>§09<span className="slash"> / </span><span className="name">BULK IMPORT</span></span>
-            <span style={{ color: "var(--l-2)", fontFamily: "var(--font-mono)", fontSize: "11px" }}>COLLEGES</span>
-          </div>
-          <div className="feat-row">
+        <div className="container">          <div className="feat-row">
             <div className="num">09</div>
             <div className="info">
               <h3>Bulk Onboarding</h3>
@@ -674,7 +611,7 @@ export default function FeaturesContent() {
                 style={{ marginTop: "8px", cursor: isParsing ? "not-allowed" : "pointer", border: "none" }}
                 disabled={isParsing}
               >
-                {isParsing ? '▢ IMPORTING COHORT...' : '▢ SIMULATE BATCH UPLOAD (85 ROWS)'}
+                {isParsing ? 'IMPORTING COHORT...' : 'SIMULATE BATCH UPLOAD (85 ROWS)'}
               </button>
             </div>
           </div>
@@ -683,12 +620,7 @@ export default function FeaturesContent() {
 
       {/* §10 Placement Analytics */}
       <section className="dark-mesh section" id="f10">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx">§10<span className="slash"> / </span><span className="name">ANALYTICS</span></span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px" }}>COLLEGES</span>
-          </div>
-          <div className="feat-row">
+        <div className="container">          <div className="feat-row">
             <div className="num">10</div>
             <div className="info">
               <h3>Placement Analytics</h3>
@@ -723,12 +655,7 @@ export default function FeaturesContent() {
 
       {/* §11 PDF Reports */}
       <section className="light section" id="f11">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx" style={{ color: "var(--l-2)" }}>§11<span className="slash"> / </span><span className="name">PDF REPORTS</span></span>
-            <span style={{ color: "var(--l-2)", fontFamily: "var(--font-mono)", fontSize: "11px" }}>COLLEGES</span>
-          </div>
-          <div className="feat-row">
+        <div className="container">          <div className="feat-row">
             <div className="num">11</div>
             <div className="info">
               <h3>PDF Reports</h3>
@@ -741,12 +668,12 @@ export default function FeaturesContent() {
             </div>
             <div className="visual">
               <div className="v-row">
-                <span className="v-pill amber" style={{ pointerEvents: "none" }}>▢ PDF PREVIEW</span>
+                <span className="v-pill amber" style={{ pointerEvents: "none" }}>PDF PREVIEW</span>
                 <span className="v-pill active">NAAC · NIRF FORMAT</span>
               </div>
               <div className="v-list" style={{ marginTop: "12px" }}>
                 <div className="v-li" style={{ flexDirection: "column", alignItems: "flex-start", gap: "4px" }}>
-                  <div className="mono" style={{ fontSize: "9px", color: "var(--amber)", letterSpacing: "0.12em", marginBottom: "4px" }}>▢ REPORT STRUCTURE</div>
+                  <div className="mono" style={{ fontSize: "9px", color: "var(--amber)", letterSpacing: "0.12em", marginBottom: "4px" }}>REPORT STRUCTURE</div>
                   {[
                     "Section A · Personal Profile",
                     "Section B · Mock Assessment Scores",
@@ -767,7 +694,7 @@ export default function FeaturesContent() {
                 className="v-pill active"
                 style={{ marginTop: "8px", cursor: "pointer", border: "none", width: "100%" }}
               >
-                ▢ SIMULATE EXPORT
+                SIMULATE EXPORT
               </button>
             </div>
           </div>
@@ -776,12 +703,7 @@ export default function FeaturesContent() {
 
       {/* §12 Auth & Security */}
       <section className="dark-mesh section" id="f12">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx">§12<span className="slash"> / </span><span className="name">SECURITY</span></span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px" }}>SECURITY</span>
-          </div>
-          <div className="feat-row">
+        <div className="container">          <div className="feat-row">
             <div className="num">12</div>
             <div className="info">
               <h3>Auth &amp; Security</h3>
@@ -795,7 +717,7 @@ export default function FeaturesContent() {
             </div>
             <div className="visual">
               <div className="v-row">
-                <span className="v-pill amber" style={{ pointerEvents: "none" }}>▢ SOC 2 TYPE II</span>
+                <span className="v-pill amber" style={{ pointerEvents: "none" }}>SOC 2 TYPE II</span>
                 <span onClick={() => triggerSSOHandshake("Google")} className={`v-pill ${activeSSO === "Google" ? "active" : ""}`}>GOOGLE SSO</span>
                 <span onClick={() => triggerSSOHandshake("Okta")} className={`v-pill ${activeSSO === "Okta" ? "active" : ""}`}>OKTA SAML</span>
                 <span onClick={() => triggerSSOHandshake("Azure")} className={`v-pill ${activeSSO === "Azure" ? "active" : ""}`}>AZURE AD</span>
@@ -813,13 +735,7 @@ export default function FeaturesContent() {
 
       {/* COMPARISON MATRIX LIGHT */}
       <section className="light section" id="f13">
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx" style={{ color: "var(--l-2)" }}>§13<span className="slash"> / </span><span className="name">COMPARE</span></span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--l-2)" }}>VS THE CATEGORY</span>
-          </div>
-          <div className="eyebrow" style={{ marginBottom: "16px" }}>COMPARE</div>
-          <h2 className="h-section">
+        <div className="container">          <h2 className="h-section">
             Why teams switch to<br /><span className="muted-weight">CareerXel.</span>
           </h2>
 
@@ -829,13 +745,7 @@ export default function FeaturesContent() {
 
       {/* §14 CTA */}
       <section className="cta-mesh page-cta" style={{ position: "relative", overflow: "hidden" }}>
-        <div className="container">
-          <div className="sx-ribbon">
-            <span className="idx">§14<span className="slash"> / </span><span className="name">START</span></span>
-            <span>FREE · NO CARD</span>
-          </div>
-          <div className="eyebrow" style={{ justifyContent: "center", margin: "0 auto 18px" }}>START FREE</div>
-          <h2 className="display"><span className="bone-grad">Try every feature today.</span></h2>
+        <div className="container">          <h2 className="display"><span className="bone-grad">Try every feature today.</span></h2>
           <p style={{ fontSize: "19px", color: "var(--d-2)", maxWidth: "600px", margin: "24px auto 0" }}>No card required. Every module included on the free tier.</p>
           <div className="flex gap-12 mt-32" style={{ justifyContent: "center" }}>
             <a className="btn btn-primary" href="#">Start free</a>
