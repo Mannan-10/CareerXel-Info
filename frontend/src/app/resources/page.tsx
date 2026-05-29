@@ -39,6 +39,7 @@ export type ResourceItem = {
   readTime?: string | null;
   authorName?: string | null;
   authorRole?: string | null;
+  content?: string | null;
   isFeatured?: boolean | null;
   isActive?: boolean | null;
   order: number;
@@ -59,4 +60,3 @@ export default async function ResourcesPage() {
 
   return <ResourcesContent resources={resources} />;
 }
-

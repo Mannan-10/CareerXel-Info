@@ -81,6 +81,7 @@ export default function ResourcesContent({ resources }: ResourcesContentProps) {
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
   const [newsletterName, setNewsletterName] = useState("");
   const [activeWebinar, setActiveWebinar] = useState<string | null>(null);
+  const [selectedArticle, setSelectedArticle] = useState<ResourceItem | null>(null);
   const [activeFeatMetric, setActiveFeatMetric] =
     useState("Calibration Overview");
 
@@ -201,6 +202,75 @@ export default function ResourcesContent({ resources }: ResourcesContentProps) {
       "Hover or click any node of the CXL-V4 engine model map on the left to read live calibrated metrics.",
   };
 
+  const renderArticleContent = (article: ResourceItem) => {
+    const rawContent = article.content;
+
+    if (typeof rawContent === "string" && rawContent.trim()) {
+      return rawContent
+        .split(/\n{2,}/)
+        .map((paragraph, index) => (
+          <p key={`${article.id}-content-${index}`}>
+            {paragraph.trim()}
+          </p>
+        ));
+    }
+
+    if (Array.isArray(rawContent)) {
+      return rawContent.map((block, index) => {
+        if (!block || typeof block !== "object") {
+          return null;
+        }
+
+        const typedBlock = block as {
+          type?: string;
+          level?: number;
+          children?: Array<{ text?: string }>;
+        };
+        const text =
+          typedBlock.children
+            ?.map((child) => child.text || "")
+            .join("")
+            .trim() || "";
+
+        if (!text) {
+          return null;
+        }
+
+        if (typedBlock.type === "heading") {
+          return (
+            <h3 key={`${article.id}-block-${index}`}>
+              {text}
+            </h3>
+          );
+        }
+
+        if (typedBlock.type === "quote") {
+          return (
+            <blockquote key={`${article.id}-block-${index}`}>
+              {text}
+            </blockquote>
+          );
+        }
+
+        return (
+          <p key={`${article.id}-block-${index}`}>
+            {text}
+          </p>
+        );
+      });
+    }
+
+    return (
+      <>
+        <p>{article.description}</p>
+        <p>
+          This resource is available in the CareerXel library. Use the metadata
+          below to route it to the right team or export format.
+        </p>
+      </>
+    );
+  };
+
   return (
     <main>
       <BackToTop />
@@ -260,6 +330,58 @@ export default function ResourcesContent({ resources }: ResourcesContentProps) {
         </div>
       ) : null}
 
+      {selectedArticle ? (
+        <div
+          className="article-overlay"
+          onClick={() => setSelectedArticle(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${selectedArticle.title} article`}
+        >
+          <article
+            className="article-reader"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="close"
+              onClick={() => setSelectedArticle(null)}
+              aria-label="Close article"
+            >
+              CLOSE
+            </button>
+
+            <div className="reader-meta">
+              <span>{selectedArticle.category}</span>
+              <span>{selectedArticle.resourceType}</span>
+              {selectedArticle.readTime ? <span>{selectedArticle.readTime}</span> : null}
+            </div>
+
+            <h2>{selectedArticle.title}</h2>
+            <p className="reader-summary">{selectedArticle.description}</p>
+
+            <div className="reader-byline">
+              <span>{selectedArticle.authorName || "CareerXel Team"}</span>
+              <span>{selectedArticle.publishedDate}</span>
+            </div>
+
+            <div className="reader-content">
+              {renderArticleContent(selectedArticle)}
+            </div>
+
+            {selectedArticle.externalUrl ? (
+              <a
+                className="reader-link"
+                href={selectedArticle.externalUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                OPEN ORIGINAL RESOURCE
+              </a>
+            ) : null}
+          </article>
+        </div>
+      ) : null}
+
       <section
         className="dark-mesh"
         id="featured"
@@ -288,7 +410,10 @@ export default function ResourcesContent({ resources }: ResourcesContentProps) {
           {mainFeatured ? (
             <div className="feat-grid">
               {/* Left Big Editor Pick */}
-              <article className="feat-card">
+              <article
+                className="feat-card"
+                onClick={() => setSelectedArticle(mainFeatured)}
+              >
                 <div className="head-art">
                   <svg
                     viewBox="0 0 600 340"
@@ -453,6 +578,8 @@ export default function ResourcesContent({ resources }: ResourcesContentProps) {
                             resource.title,
                             resource.downloadFormat || resource.resourceType
                           );
+                        } else {
+                          setSelectedArticle(resource);
                         }
                       }}
                     >
@@ -529,9 +656,7 @@ export default function ResourcesContent({ resources }: ResourcesContentProps) {
               <article
                 key={article.documentId || article.id}
                 className="art-card"
-                onClick={() =>
-                  triggerToast(`Navigating to essay "${article.title}"`, "Read Essay")
-                }
+                onClick={() => setSelectedArticle(article)}
               >
                 <div className="thumb">
                   <div className="grid" />
@@ -583,4 +708,3 @@ export default function ResourcesContent({ resources }: ResourcesContentProps) {
     </main>
   );
 }
-
