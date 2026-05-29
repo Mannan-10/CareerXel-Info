@@ -133,7 +133,8 @@ export default function Navbar({ globalSetting }: NavbarProps) {
     }`;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#1A1F2E]/85 backdrop-blur-2xl">
+    <>
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#1A1F2E]/85 backdrop-blur-2xl">
       <nav
         className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-4 sm:px-6 lg:px-8"
         aria-label="Main navigation"
@@ -209,7 +210,7 @@ export default function Navbar({ globalSetting }: NavbarProps) {
                     }`}
                   >
                     <span
-                      className={`mt-0.5 flex-shrink-0 transition-colors ${
+                      className={`mt-0.5 shrink-0 transition-colors ${
                         isActive(item.href)
                           ? "text-[#4A8BFF]"
                           : "text-[#6B7590] group-hover/item:text-[#4A8BFF]"
@@ -351,7 +352,7 @@ export default function Navbar({ globalSetting }: NavbarProps) {
                 Solutions
               </p>
 
-              <div className="mb-2 overflow-hidden rounded-xl border border-white/10 bg-white/[0.02]">
+              <div className="mb-2 overflow-hidden rounded-xl border border-white/10 bg-white/2">
                 {solutionLinks.map((item) => (
                   <Link
                     key={item.href}
@@ -364,7 +365,7 @@ export default function Navbar({ globalSetting }: NavbarProps) {
                     }`}
                   >
                     <span
-                      className={`flex-shrink-0 ${
+                      className={`shrink-0 ${
                         isActive(item.href)
                           ? "text-[#4A8BFF]"
                           : "text-[#4B5270]"
@@ -434,5 +435,7 @@ export default function Navbar({ globalSetting }: NavbarProps) {
         </>
       )}
     </header>
+    <div className="h-16" aria-hidden="true" />
+    </>
   );
 }
